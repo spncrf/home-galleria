@@ -1,9 +1,14 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Container  from '../core/Container.astro';
+import { Icon } from "astro-icon/components";
+import Container from "../core/Container.astro";
 
-const { footerSocials, footerLists, copyrightName, background, color = true } =
-  Astro.props;
+const {
+  footerSocials,
+  footerLists,
+  copyrightName,
+  background,
+  color = true,
+} = Astro.props;
 ---
 
 <footer
@@ -17,7 +22,7 @@ const { footerSocials, footerLists, copyrightName, background, color = true } =
         </div>
         <ul class="footer-socials__list">
           {
-            footerSocials.map((social) => (
+            footerSocials.map(social => (
               <li class="footer-socials__item">
                 <a
                   href={social.url}
@@ -34,11 +39,13 @@ const { footerSocials, footerLists, copyrightName, background, color = true } =
         </ul>
       </div>
       {
-        footerLists.map((list) => (
+        footerLists.map(list => (
           <div>
-            <p><strong>{list.title}</strong></p>
+            <p>
+              <strong>{list.title}</strong>
+            </p>
             <ul class="footer-link__list">
-              {list.items.map((item) => (
+              {list.items.map(item => (
                 <li>
                   <a href={item.slug}>{item.title}</a>
                 </li>
@@ -51,7 +58,6 @@ const { footerSocials, footerLists, copyrightName, background, color = true } =
     <div class="footer-copyright__container">
       <p>Copyright &copy; {new Date().getFullYear()} {copyrightName}</p>
     </div>
-
   </Container>
 </footer>
 
