@@ -1,0 +1,17 @@
+backend:
+  commit_message:
+    create: Create {{ collection }} "{{ slug }}"
+    update: Update {{ collection }} "{{ slug }}"
+    delete: Delete {{ collection }} "{{ slug }}"
+    uploadMedia: Upload "{{ path }}"
+    deleteMedia: Delete "{{ path }}"
+    openAuthoring: "{{ author-name }}"
+  name: github
+  repo: spncrf/home-galleria
+  branch: main
+  squash_merges: true
+  open_authoring: true
+
+publish_mode: editorial_workflow
+media_folder: "public/assets/images"
+public_folder: "/assets/images"
