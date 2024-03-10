@@ -7,6 +7,7 @@ backend:
     deleteMedia: Delete "{{ path }}"
     openAuthoring: "{{ author-name }}"
   name: github
+  name: git-gateway
   repo: spncrf/home-galleria
   branch: main
   squash_merges: true
@@ -16,16 +17,13 @@ publish_mode: editorial_workflow
 media_folder: "public/assets/images"
 public_folder: "/assets/images"
 collections:
-  - name: post
-    label: Posts
-    folder: src/content/posts
+  - name: mural
+    label: Murals
+    folder: src/content/murals
     create: true
-    format: frontmatter
-    preview_path: post/{{slug}}
     fields:
       - { name: title, label: Title }
       - { name: description, label: Description }
-      - { name: publishedAt, label: Date, widget: date }
-      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
-      - { name: body, label: Body, widget: markdown }
+      - { name: date, label: Date, widget: date }
+      - { label: "Publish", name: "isPublish", widget: "boolean", default: true}
+      - { label: "Draft", name: "isDraft", widget: "boolean", default: false}
