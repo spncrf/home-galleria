@@ -15,3 +15,17 @@ backend:
 publish_mode: editorial_workflow
 media_folder: "public/assets/images"
 public_folder: "/assets/images"
+collections:
+  - name: post
+    label: Posts
+    folder: src/content/posts
+    create: true
+    format: frontmatter
+    preview_path: post/{{slug}}
+    fields:
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: publishedAt, label: Date, widget: date }
+      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
+      - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
+      - { name: body, label: Body, widget: markdown }
