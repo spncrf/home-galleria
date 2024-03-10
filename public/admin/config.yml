@@ -12,17 +12,19 @@ backend:
   squash_merges: true
   open_authoring: true
 
-publish_mode: editorial_workflow
+editor:
+  preview: false
+
+publish_mode: simple  # simple or editorial_workflow
 media_folder: "public/assets/images"
 public_folder: "/assets/images"
 collections:
-  - name: murals
-    label: Mural
-    folder: src/content/murals
+  - name: artwork
+    label: Artwork
+    folder: src/content/artwork
     create: true
     fields:
-      - { name: title, label: Title, widget: text }
-      - { name: description, label: Description, widget: text }
+      - { name: title, label: Title, widget: text, required: false }
+      - { name: description, label: Description, widget: text, required: false }
       - { name: image, label: Image, widget: image }
-      - { label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - { label: "Draft", name: "isDraft", widget: "boolean", default: false}
+      - { name: work_type, label: 'Type of Artwork', widget: select, options: ['Mural', 'Clock']}
