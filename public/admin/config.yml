@@ -10,7 +10,7 @@ backend:
   repo: spncrf/home-galleria
   branch: main
   squash_merges: true
-  open_authoring: true
+  #open_authoring: true # set true for editorial_workflow
 
 editor:
   preview: false
