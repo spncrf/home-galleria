@@ -6,7 +6,6 @@ backend:
     uploadMedia: Upload "{{ path }}"
     deleteMedia: Delete "{{ path }}"
     openAuthoring: "{{ author-name }}"
-#  name: github
   name: git-gateway
   repo: spncrf/home-galleria
   branch: main
@@ -17,13 +16,13 @@ publish_mode: editorial_workflow
 media_folder: "public/assets/images"
 public_folder: "/assets/images"
 collections:
-  - name: mural
-    label: Murals
+  - name: murals
+    label: Mural
     folder: src/content/murals
     create: true
     fields:
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title, widget: text }
+      - { name: description, label: Description, widget: text }
+      - { name: image, label: Image, widget: image }
       - { label: "Publish", name: "isPublish", widget: "boolean", default: true}
       - { label: "Draft", name: "isDraft", widget: "boolean", default: false}
