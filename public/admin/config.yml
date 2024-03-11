@@ -16,7 +16,7 @@ editor:
 
 publish_mode: simple  # simple or editorial_workflow
 media_folder: "public/assets/images"
-public_folder: "public/assets/images"
+public_folder: "assets/images"
 
 collections:
   - name: home_page

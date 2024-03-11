@@ -1,5 +1,6 @@
 {
   "about": "# Welcome to my Website\n\nI hope you enjoy it",
+  "custom_field": "will this stay?",
   "tile_link_images": {
     "mural": "public/assets/images/bichon.jpg",
     "clocks": "public/assets/images/blog-page-screenshot.png"

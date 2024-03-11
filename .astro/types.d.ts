@@ -139,10 +139,10 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"test": {
-"home_page_content": {
-	id: "home_page_content";
-  collection: "test";
+		"home": {
+"content": {
+	id: "content";
+  collection: "home";
   data: any
 };
 };
