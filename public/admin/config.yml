@@ -34,6 +34,7 @@ collections:
           - name: tile_link_images
             label: 'Tile Link Images'
             widget: object
+            fields:
               - name: mural
                 label: 'Mural Image'
                 widget: image
