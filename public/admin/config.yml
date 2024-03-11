@@ -16,8 +16,8 @@ editor:
   preview: false
 
 publish_mode: simple  # simple or editorial_workflow
-media_folder: "assets/images"
-public_folder: "images"
+media_folder: "public/assets/images"
+public_folder: "public/assets/images"
 
 collections:
   - name: home_page
@@ -26,7 +26,7 @@ collections:
     files:
       - name: 'home_page_content'
         label: 'Home Page Content'
-        file: 'src/_decap/home_page_content.json'
+        file: 'src/content/home_page_content.json'
         description: 'Content for the Home Page'
         fields:
           - name: 'about'
