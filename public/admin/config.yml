@@ -1,10 +1,10 @@
 backend:
   commit_message:
-    create: Create {{ collection }} "{{ slug }}"
-    update: Update {{ collection }} "{{ slug }}"
-    delete: Delete {{ collection }} "{{ slug }}"
-    uploadMedia: Upload "{{ path }}"
-    deleteMedia: Delete "{{ path }}"
+    create: 'CMS: Create {{ collection }} "{{ slug }}"'
+    update: 'CMS: Update {{ collection }} "{{ slug }}"'
+    delete: 'CMS: Delete {{ collection }} "{{ slug }}"'
+    uploadMedia: 'CMS: Upload "{{ path }}"'
+    deleteMedia: 'CMS: Delete "{{ path }}"'
     openAuthoring: "{{ author-name }}"
   name: git-gateway
   repo: spncrf/home-galleria
@@ -16,17 +16,17 @@ editor:
   preview: false
 
 publish_mode: simple  # simple or editorial_workflow
-media_folder: "public/assets/images"
-public_folder: "/assets/images"
+media_folder: "assets/images"
+public_folder: "images"
 
 collections:
   - name: home_page
     label: 'Home'
     delete: false
     files:
-      - name: 'content'
+      - name: 'home_page_content'
         label: 'Home Page Content'
-        file: 'content/home.json'
+        file: 'src/_decap/home_page_content.json'
         description: 'Content for the Home Page'
         fields:
           - name: 'about'
