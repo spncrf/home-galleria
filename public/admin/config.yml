@@ -1,11 +1,10 @@
 backend:
   commit_message:
-    create: 'CMS: Create {{ collection }} "{{ slug }}"'
-    update: 'CMS: Update {{ collection }} "{{ slug }}"'
-    delete: 'CMS: Delete {{ collection }} "{{ slug }}"'
-    uploadMedia: 'CMS: Upload "{{ path }}"'
-    deleteMedia: 'CMS: Delete "{{ path }}"'
-    openAuthoring: "{{ author-name }}"
+    create: '{{ author-name }}: Create {{ collection }} "{{ slug }}"'
+    update: '{{ author-name }}: Update {{ collection }} "{{ slug }}"'
+    delete: '{{ author-name }}: Delete {{ collection }} "{{ slug }}"'
+    uploadMedia: '{{ author-name }}: Upload "{{ path }}"'
+    deleteMedia: '{{ author-name }}: Delete "{{ path }}"'
   name: git-gateway
   repo: spncrf/home-galleria
   branch: main
@@ -24,18 +23,25 @@ collections:
     label: 'Home'
     delete: false
     files:
-      - name: 'home_page_content'
+      - name: 'home_content'
         label: 'Home Page Content'
-        file: 'src/content/home_page_content.json'
+        file: 'src/content/home/content.json'
         description: 'Content for the Home Page'
         fields:
-          - name: 'about'
-            label: About
+          - name: about
+            label: 'About'
             widget: markdown
-          - name: 'cover'
-            label: Cover Photo
-            widget: image
-            choose_url: false
+          - name: tile_link_images
+            label: 'Tile Link Images'
+            widget: object
+              - name: mural
+                label: 'Mural Image'
+                widget: image
+                choose_url: false
+              - name: clocks
+                label: 'Clocks Image'
+                widget: image
+                choose_url: false
             
     
   # - name: artwork
