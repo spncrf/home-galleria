@@ -9,12 +9,12 @@ backend:
   repo: spncrf/home-galleria
   branch: main
   squash_merges: true
-  #open_authoring: true # set true for editorial_workflow
+  open_authoring: true # for editorial_workflow
 
 editor:
   preview: false
 
-publish_mode: simple  # simple or editorial_workflow
+publish_mode: editorial_workflow  # simple or editorial_workflow
 media_folder: "src/images"
 public_folder: "images"
 
@@ -60,7 +60,7 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
-            label_singular: 'Entry'
+            label_singular: Entry
             fields: 
               - name: image
                 label: Image
@@ -83,7 +83,7 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
-            label_singular: 'Entry'
+            label_singular: Entry
             fields: 
               - name: image
                 label: Image
