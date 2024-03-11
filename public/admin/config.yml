@@ -43,56 +43,36 @@ collections:
                 label: 'Clock Image'
                 widget: image
                 choose_url: false
-  - name: galleries
-    label: 'Galleries'
-    delete: false
-    files:
-      - name: mural
-        label: 'Mural Gallery'
-        file: src/content/galleries/mural.json
-        description: 'Gallery for the Murals'
-        fields:
-          - name: intro
-            label: Intro
+  - name: artwork
+    label: 'Artwork'
+    folder: "src/content/artwork"
+    create: true
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: intro
+        label: Intro
+        widget: text
+      - name: gallery
+        label: Gallery
+        widget: list
+        summary: '{{ fields.image }}'
+        allow_add: true
+        label_singular: Entry
+        fields: 
+          - name: image
+            label: Image
+            widget: image
+            choose_url: false
+          - name: alt_text
+            label: Alt text
+            widget: string
+            default: {{ slug }}
+          - name: description
+            label: Description
             widget: text
-          - name: gallery
-            label: Gallery
-            widget: list
-            summary: '{{ fields.image }}'
-            allow_add: true
-            label_singular: Entry
-            fields: 
-              - name: image
-                label: Image
-                widget: image
-                choose_url: false
-              - name: description
-                label: Description
-                widget: text
-                optional: true
-      - name: clock
-        label: 'Clock Gallery'
-        file: src/content/galleries/clock.json
-        description: 'Gallery for the Clocks'
-        fields:
-          - name: intro
-            label: Intro
-            widget: text
-          - name: gallery
-            label: Gallery
-            widget: list
-            summary: '{{ fields.image }}'
-            allow_add: true
-            label_singular: Entry
-            fields: 
-              - name: image
-                label: Image
-                widget: image
-                choose_url: false
-              - name: description
-                label: Description
-                widget: text
-                optional: true
+            optional: true
   - name: about
     label: About
     delete: false

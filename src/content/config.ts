@@ -1,11 +1,13 @@
 import { defineCollection, z } from "astro:content";
 
-const galleryCollection = defineCollection({
+const artworkCollection = defineCollection({
     type: 'data',
     schema: z.object({
+        title: z.string(),
         intro: z.string(),
         gallery: z.array(z.object({
             image: z.string(),
+            alt_text: z.string(),
             description: z.string()
         }))
     })
@@ -30,4 +32,4 @@ const aboutCollection = defineCollection({
     })
 })
 
-export const collections = { home: homeCollection, clock: galleryCollection, mural: galleryCollection, about: aboutCollection  };
+export const collections = { home: homeCollection, artwork: artworkCollection, about: aboutCollection  };
