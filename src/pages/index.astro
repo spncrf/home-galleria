@@ -11,18 +11,16 @@ import {
 } from "@components/odyssey-theme";
 import Layout from "@layouts/Page.astro";
 import TextAndImageHero from "@components/sections/heros/TextAndImageHero.astro";
-import { getEntry, getEntries } from "astro:content";
-import { getCollection } from "astro:content";
-import { collection } from 'content/config';
+import { getEntry } from "astro:content";
 
 const seo = {
   title: "Landing Page #1 | Astro Odyssey Theme",
   description: "Landing Page #1 | Astro Odyssey Theme",
 };
 
-const homeContent = await getEntry('home', 'home');
+const homeContent = await getEntry('home', 'data');
 
-const { about, tile_link_images} = homeContent.data;
+const { intro, gallery_links } = homeContent.data;
 ---
 
 <AnnouncementBar
@@ -34,8 +32,8 @@ const { about, tile_link_images} = homeContent.data;
 <Layout {seo}>
   <TextAndImageHero reversed>
     <div slot="text-container">
-      { about } 
-      { tile_link_images.mural }
+      { intro } 
+      { gallery_links.mural }
     </div>
     <div slot="btns-container">
       <Button href="/theme/get-started" customIcon

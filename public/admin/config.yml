@@ -19,31 +19,90 @@ media_folder: "public/assets/images"
 public_folder: "assets/images"
 
 collections:
-  - name: home_collection
+  - name: home
     label: 'Home'
     delete: false
     files:
-      - name: 'home'
-        label: 'Home Page Content'
-        file: 'src/content/home/home.json'
+      - name: 'data'
+        label: 'Home Page Data'
+        file: 'src/content/home/data.json'
         description: 'Content for the Home Page'
         fields:
-          - name: about
-            label: 'About'
-            widget: markdown
-          - name: tile_link_images
-            label: 'Tile Link Images'
+          - name: intro
+            label: 'Intro'
+            widget: text
+          - name: gallery_links
+            label: 'Gallery Links'
             widget: object
             fields:
               - name: mural
                 label: 'Mural Image'
                 widget: image
                 choose_url: false
-              - name: clocks
-                label: 'Clocks Image'
+              - name: clock
+                label: 'Clock Image'
                 widget: image
                 choose_url: false
-            
+  - name: galleries
+    label: 'Galleries'
+    delete: false
+    files:
+      - name: mural
+        label: 'Mural Gallery'
+        file: src/content/galleries/mural.json
+        description: 'Gallery for the Murals'
+        fields:
+          - name: intro
+            label: Intro
+            widget: text
+          - name: gallery
+            label: Gallery
+            widget: list
+            summary: '{{ fields.image }}'
+            allow_add: true
+            fields: 
+              - name: image
+                label: Image
+                widget: Image
+              - name: description
+                label: Description
+                widget: Text
+                optional: true
+      - name: clock
+        label: 'Clock Gallery'
+        file: src/content/galleries/clock.json
+        description: 'Gallery for the Clocks'
+        fields:
+          - name: intro
+            label: Intro
+            widget: text
+          - name: gallery
+            label: Gallery
+            widget: list
+            summary: '{{ fields.image }}'
+            allow_add: true
+            fields: 
+              - name: image
+                label: Image
+                widget: Image
+              - name: description
+                label: Description
+                widget: Text
+                optional: true
+  - name: about
+    label: About
+    delete: false
+    files:
+      - name: 'data'
+        label: 'About Page Data'
+        file: 'src/content/home/data.json'
+        description: 'Content for the About Page'
+        fields:
+          - name: body
+            label: 'Body'
+            widget: markdown
+
+
     
   # - name: artwork
   #   label: Artwork
