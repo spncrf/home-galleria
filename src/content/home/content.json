@@ -1,0 +1,7 @@
+{
+  "about": "# Welcome to my Website\n\nI hope you enjoy it",
+  "tile_link_images": {
+    "mural": "public/assets/images/bichon.jpg",
+    "clocks": "public/assets/images/blog-page-screenshot.png"
+  }
+}
