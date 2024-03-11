@@ -140,6 +140,11 @@ declare module 'astro:content' {
 
 	type DataEntryMap = {
 		"about": {
+"data": {
+	id: "data";
+  collection: "about";
+  data: InferEntrySchema<"about">
+};
 };
 "clock": {
 };

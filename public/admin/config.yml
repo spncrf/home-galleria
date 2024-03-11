@@ -28,6 +28,9 @@ collections:
         file: 'src/content/home/data.json'
         description: 'Content for the Home Page'
         fields:
+          - name: title
+            label: 'Title'
+            widget: string
           - name: intro
             label: 'Intro'
             widget: text
@@ -65,6 +68,7 @@ collections:
               - name: image
                 label: Image
                 widget: image
+                choose_url: false
               - name: description
                 label: Description
                 widget: text
@@ -82,11 +86,12 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
-            label_singular: 'Add Entry'
+            label_singular: 'Entry'
             fields: 
               - name: image
                 label: Image
                 widget: image
+                choose_url: false
               - name: description
                 label: Description
                 widget: text
@@ -100,8 +105,11 @@ collections:
         file: 'src/content/home/data.json'
         description: 'Content for the About Page'
         fields:
-          - name: body
-            label: 'Body'
+          - name: page_title
+            label: 'About'
+            widget: string
+          - name: intro
+            label: 'Intro'
             widget: markdown
 
 

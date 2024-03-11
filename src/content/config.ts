@@ -25,7 +25,8 @@ const homeCollection = defineCollection({
 const aboutCollection = defineCollection({
     type: 'data',
     schema: z.object({
-        body: z.string()
+        intro: z.string(),
+        page_title: z.string()
     })
 })
 
