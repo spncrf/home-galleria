@@ -1,7 +1,8 @@
 {
-  "intro": "# Welcome to my Website\n\nI am trying a different one!",
+  "intro": "# Welcome to my Website\n\nIs this connected??",
   "gallery_links": {
     "mural": "assets/images/bichon.jpg",
     "clock": "assets/images/hero-waves.jpg"
-  }
+  },
+  "page_title": "About to"
 }
