@@ -1,0 +1,9 @@
+{
+  "gallery": [
+    {
+      "image": "assets/bichon.jpg",
+      "description": "My Bichon :) "
+    }
+  ],
+  "intro": "My Intro"
+}
