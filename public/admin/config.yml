@@ -15,8 +15,8 @@ editor:
   preview: false
 
 publish_mode: simple  # simple or editorial_workflow
-media_folder: "public/assets/images"
-public_folder: "assets/images"
+media_folder: "src/assets"
+public_folder: "assets"
 
 collections:
   - name: home
@@ -60,13 +60,14 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
+            label_singular: 'Add Entry'
             fields: 
               - name: image
                 label: Image
-                widget: Image
+                widget: image
               - name: description
                 label: Description
-                widget: Text
+                widget: text
                 optional: true
       - name: clock
         label: 'Clock Gallery'
@@ -81,13 +82,14 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
+            label_singular: 'Add Entry'
             fields: 
               - name: image
                 label: Image
-                widget: Image
+                widget: image
               - name: description
                 label: Description
-                widget: Text
+                widget: text
                 optional: true
   - name: about
     label: About
