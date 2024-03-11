@@ -15,8 +15,8 @@ editor:
   preview: false
 
 publish_mode: simple  # simple or editorial_workflow
-media_folder: "src/assets"
-public_folder: "assets"
+media_folder: "src/images"
+public_folder: "images"
 
 collections:
   - name: home
@@ -28,9 +28,6 @@ collections:
         file: 'src/content/home/data.json'
         description: 'Content for the Home Page'
         fields:
-          - name: title
-            label: 'Title'
-            widget: string
           - name: intro
             label: 'Intro'
             widget: text
@@ -63,7 +60,7 @@ collections:
             widget: list
             summary: '{{ fields.image }}'
             allow_add: true
-            label_singular: 'Add Entry'
+            label_singular: 'Entry'
             fields: 
               - name: image
                 label: Image

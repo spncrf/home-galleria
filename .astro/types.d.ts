@@ -150,6 +150,13 @@ declare module 'astro:content' {
 };
 "clocks": {
 };
+"galleries": {
+"clock": {
+	id: "clock";
+  collection: "galleries";
+  data: any
+};
+};
 "home": {
 "data": {
 	id: "data";
