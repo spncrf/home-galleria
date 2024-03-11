@@ -18,13 +18,32 @@ editor:
 publish_mode: simple  # simple or editorial_workflow
 media_folder: "public/assets/images"
 public_folder: "/assets/images"
+
 collections:
-  - name: artwork
-    label: Artwork
-    folder: src/content/artwork
-    create: true
-    fields:
-      - { name: title, label: Title, widget: text, required: false }
-      - { name: description, label: Description, widget: text, required: false }
-      - { name: image, label: Image, widget: image }
-      - { name: work_type, label: 'Type of Artwork', widget: select, options: ['Mural', 'Clock']}
+  - name: home_page
+    label: 'Home'
+    delete: false
+    files:
+      - name: 'content'
+        label: 'Home Page Content'
+        file: 'content/home.json'
+        description: 'Content for the Home Page'
+        fields:
+          - name: 'about'
+            label: About
+            widget: markdown
+          - name: 'cover'
+            label: Cover Photo
+            widget: image
+            choose_url: false
+            
+    
+  # - name: artwork
+  #   label: Artwork
+  #   folder: src/content/artwork
+  #   create: true
+  #   fields:
+  #     - { name: title, label: Title, widget: text, required: false }
+  #     - { name: description, label: Description, widget: text, required: false }
+  #     - { name: image, label: Image, widget: image }
+  #     - { name: work_type, label: 'Type of Artwork', widget: select, options: ['Mural', 'Clock']}
