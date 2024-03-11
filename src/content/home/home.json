@@ -3,6 +3,6 @@
   "custom_field": "will this stay?",
   "tile_link_images": {
     "mural": "assets/images/bichon.jpg",
-    "clocks": "public/assets/images/blog-page-screenshot.png"
+    "clocks": "assets/images/blog-page-screenshot.png"
   }
 }

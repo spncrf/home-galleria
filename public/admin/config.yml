@@ -19,13 +19,13 @@ media_folder: "public/assets/images"
 public_folder: "assets/images"
 
 collections:
-  - name: home_page
+  - name: home_collection
     label: 'Home'
     delete: false
     files:
-      - name: 'home_content'
+      - name: 'home'
         label: 'Home Page Content'
-        file: 'src/content/home/content.json'
+        file: 'src/content/home/home.json'
         description: 'Content for the Home Page'
         fields:
           - name: about

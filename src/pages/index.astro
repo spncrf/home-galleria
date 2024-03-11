@@ -11,14 +11,16 @@ import {
 } from "@components/odyssey-theme";
 import Layout from "@layouts/Page.astro";
 import TextAndImageHero from "@components/sections/heros/TextAndImageHero.astro";
-import { getEntry } from "astro:content";
+import { getEntry, getEntries } from "astro:content";
+import { getCollection } from "astro:content";
+import { collection } from 'content/config';
 
 const seo = {
   title: "Landing Page #1 | Astro Odyssey Theme",
   description: "Landing Page #1 | Astro Odyssey Theme",
 };
 
-const homeContent = await getEntry('home', 'content');
+const homeContent = await getEntry('home', 'home');
 
 const { about, tile_link_images} = homeContent.data;
 ---
