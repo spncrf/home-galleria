@@ -49,4 +49,5 @@ const decapConfig: CmsConfig =  {
     homeCollection,
   ],
 }
+
 export default decapConfig;

@@ -15,7 +15,7 @@ type WMCollectionConfig = Omit<CmsCollection, keyof typeof webmasterCollectionCo
 export const createWMCollection = (collectionConfig: WMCollectionConfig): CmsCollection => {
   return {
     ...collectionConfig,
-    ...webmasterCollectionConfig,
+    ...webmasterCollectionConfig
   };
 };
 
@@ -29,10 +29,10 @@ export const addPageContentFile = (collection: CmsCollection, contentFields: Cms
     fields: contentFields,
   };
   if (collection.files) {
-    collection.files.push(pageContentFile)
+    collection.files = [...collection.files, pageContentFile]
   }
   else {
-    collection.files = [];
+    collection.files = [pageContentFile];
   }
   return collection;
 };
