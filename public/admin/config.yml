@@ -9,12 +9,11 @@ backend:
   repo: spncrf/home-galleria
   branch: main
   squash_merges: true
-  open_authoring: true # for editorial_workflow
 
 editor:
   preview: false
 
-publish_mode: editorial_workflow  # simple or editorial_workflow
+publish_mode: simple 
 media_folder: "src/images"
 public_folder: "images"
 
