@@ -1,25 +1,21 @@
 import type { CmsCollection, CmsField,  CmsCollectionFile } from 'decap-cms-core';
 
-interface CollectionAddition {
-  collection: CmsCollection;
-}
-interface AddPageContentFile extends CollectionAddition {
-  contentFields: CmsField[];
-}
+  const webmasterCollectionConfig = {
+    delete: false,
+    files: []
+  };
+
+type WMCollectionConfig = Omit<CmsCollection, keyof typeof webmasterCollectionConfig>
 
 /**
  * Collections that have been created by the website's webmaster
  * @param collectionConfig 
  * @returns 
  */
-export const createWMCollection = (collectionConfig: CmsCollection): CmsCollection => {
-  const webmasterCollectionConfig = {
-    delete: false,
-    files: []
-  };
+export const createWMCollection = (collectionConfig: WMCollectionConfig): CmsCollection => {
   return {
-    ...webmasterCollectionConfig,
     ...collectionConfig,
+    ...webmasterCollectionConfig,
   };
 };
 

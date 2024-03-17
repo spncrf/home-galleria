@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build --verbose",
     "preview": "astro preview",
     "sync": "astro sync",
     "format": "npx prettier -w ."

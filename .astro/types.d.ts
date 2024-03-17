@@ -148,6 +148,13 @@ declare module 'astro:content' {
 };
 "artwork": {
 };
+"clock": {
+"content": {
+	id: "content";
+  collection: "clock";
+  data: any
+};
+};
 "home": {
 "data": {
 	id: "data";
