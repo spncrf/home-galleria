@@ -18,22 +18,17 @@ const seo = {
   description: "Landing Page #1 | Astro Odyssey Theme",
 };
 
-const homeContent = await getEntry('home', 'data');
+const homeContent = await getEntry("home", "content");
 
 const { intro, gallery_links } = homeContent.data;
 ---
 
-<AnnouncementBar
-  text="Read Our Latest Blog Post"
-  href="/blog/posts/remote-work-mental-health/"
-  slot="announcement-bar"
-/>
 <script src="../utils/auth"></script>
 <Layout {seo}>
   <TextAndImageHero reversed>
     <div slot="text-container">
-      { intro } 
-      { gallery_links.mural }
+      {intro}
+      {gallery_links.mural}
     </div>
     <div slot="btns-container">
       <Button href="/theme/get-started" customIcon

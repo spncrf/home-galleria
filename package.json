@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@astrojs/ts-plugin": "^1.5.3",
-    "@sickfob/astro-decap-cms": "^1.0.3", 
+    "@sickfob/astro-decap-cms": "^1.0.3",
     "decap-cms-app": "^3.1.3"
   }
 }

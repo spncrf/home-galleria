@@ -1,25 +1,38 @@
-import type { CmsCollection, CmsField,  CmsCollectionFile } from 'decap-cms-core';
+import type {
+  CmsCollection,
+  CmsField,
+  CmsCollectionFile,
+} from "decap-cms-core";
 
-  const webmasterCollectionConfig = {
-    delete: false,
-    files: []
-  };
+const webmasterCollectionConfig = {
+  delete: false,
+  files: [],
+};
 
-type WMCollectionConfig = Omit<CmsCollection, keyof typeof webmasterCollectionConfig>
+type WMCollectionConfig = Omit<
+  CmsCollection,
+  keyof typeof webmasterCollectionConfig
+>;
 
 /**
  * Collections that have been created by the website's webmaster
- * @param collectionConfig 
- * @returns 
+ * @param collectionConfig
+ * @returns
  */
-export const createWMCollection = (collectionConfig: WMCollectionConfig): CmsCollection => {
+export const createDataCollection = (
+  collectionConfig: WMCollectionConfig,
+): CmsCollection => {
   return {
     ...collectionConfig,
-    ...webmasterCollectionConfig
+    ...webmasterCollectionConfig,
   };
 };
 
-export const addPageContentFile = (collection: CmsCollection, contentFields: CmsField[]): CmsCollection => {
+// In a Data collection, all files must have the same
+export const setPageContentFile = (
+  collection: CmsCollection,
+  contentFields: CmsField[],
+): CmsCollection => {
   const { label, name } = collection;
   const pageContentFile: CmsCollectionFile = {
     name: `${name}_page_content`,
@@ -28,11 +41,6 @@ export const addPageContentFile = (collection: CmsCollection, contentFields: Cms
     description: `Content for the ${label} Page`,
     fields: contentFields,
   };
-  if (collection.files) {
-    collection.files = [...collection.files, pageContentFile]
-  }
-  else {
-    collection.files = [pageContentFile];
-  }
+  collection.files = [pageContentFile];
   return collection;
 };

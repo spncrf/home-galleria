@@ -140,8 +140,8 @@ declare module 'astro:content' {
 
 	type DataEntryMap = {
 		"about": {
-"data": {
-	id: "data";
+"content": {
+	id: "content";
   collection: "about";
   data: InferEntrySchema<"about">
 };
@@ -156,10 +156,17 @@ declare module 'astro:content' {
 };
 };
 "home": {
-"data": {
-	id: "data";
+"content": {
+	id: "content";
   collection: "home";
   data: InferEntrySchema<"home">
+};
+};
+"mural": {
+"content": {
+	id: "content";
+  collection: "mural";
+  data: any
 };
 };
 

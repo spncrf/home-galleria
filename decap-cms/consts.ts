@@ -1,4 +1,4 @@
-import type { CmsField } from 'decap-cms-core';
+import type { CmsField } from "decap-cms-core";
 
 export const artworkCollectionPageContentFields: CmsField[] = [
   {

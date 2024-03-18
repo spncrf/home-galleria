@@ -1,28 +1,44 @@
-import type { CmsConfig } from 'decap-cms-core';
-import { addPageContentFile, createWMCollection } from './utilities';
-import { artworkCollectionPageContentFields, homeCollectionPageContentFields, aboutCollectionPageContentFields } from './consts';
+import type { CmsConfig } from "decap-cms-core";
+import {
+  artworkCollectionPageContentFields,
+  homeCollectionPageContentFields,
+  aboutCollectionPageContentFields,
+} from "./consts";
+import { createDataCollection, setPageContentFile } from "./utilities";
 
 /** Collections */
 // Collections built using decorator pattern
 
 // Home
-let homeCollection = createWMCollection({ label: "Home", name: "home" });
-homeCollection = addPageContentFile(homeCollection, homeCollectionPageContentFields)
+let homeCollection = createDataCollection({ label: "Home", name: "home" });
+homeCollection = setPageContentFile(
+  homeCollection,
+  homeCollectionPageContentFields,
+);
 
 // About
-let aboutCollection = createWMCollection({ label: "About", name: "about" });
-aboutCollection = addPageContentFile(aboutCollection, aboutCollectionPageContentFields);
+let aboutCollection = createDataCollection({ label: "About", name: "about" });
+aboutCollection = setPageContentFile(
+  aboutCollection,
+  aboutCollectionPageContentFields,
+);
 
 // Mural
-let muralCollection = createWMCollection({ label: "Mural", name: "mural" });
-muralCollection = addPageContentFile(muralCollection, artworkCollectionPageContentFields);
+let muralCollection = createDataCollection({ label: "Mural", name: "mural" });
+muralCollection = setPageContentFile(
+  muralCollection,
+  artworkCollectionPageContentFields,
+);
 
 // Clock
-let clockCollection = createWMCollection({ label: "Clock", name: "clock" });
-clockCollection = addPageContentFile(clockCollection, artworkCollectionPageContentFields);
+let clockCollection = createDataCollection({ label: "Clock", name: "clock" });
+clockCollection = setPageContentFile(
+  clockCollection,
+  artworkCollectionPageContentFields,
+);
 
 /** Config */
-const decapConfig: CmsConfig =  {
+const decapConfig: CmsConfig = {
   backend: {
     commit_messages: {
       create: "{{ author-name }}: Create {{ collection }} {{ slug }}",
@@ -48,6 +64,6 @@ const decapConfig: CmsConfig =  {
     clockCollection,
     homeCollection,
   ],
-}
+};
 
 export default decapConfig;

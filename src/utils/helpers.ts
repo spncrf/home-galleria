@@ -1,4 +1,4 @@
-export function generateSlug(string) {
+export function generateSlug(string: string) {
   return string
     .toString()
     .trim()
@@ -10,8 +10,8 @@ export function generateSlug(string) {
     .replace(/-+$/, "");
 }
 
-export function generateTagData(categories) {
-  let categoryData = [];
+export function generateTagData(categories: string[]) {
+  let categoryData: { title: string; slug: string }[] = [];
   categories.forEach(category => {
     categoryData.push({
       title: category,
