@@ -146,13 +146,11 @@ declare module 'astro:content' {
   data: InferEntrySchema<"about">
 };
 };
-"artwork": {
-};
 "clock": {
 "content": {
 	id: "content";
   collection: "clock";
-  data: any
+  data: InferEntrySchema<"clock">
 };
 };
 "home": {
@@ -166,7 +164,7 @@ declare module 'astro:content' {
 "content": {
 	id: "content";
   collection: "mural";
-  data: any
+  data: InferEntrySchema<"mural">
 };
 };
 

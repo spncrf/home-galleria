@@ -24,3 +24,6 @@ icon.d.ts
 
 # generated types
 .astro/
+
+# local references
+examples/

@@ -8,7 +8,7 @@ export { default as AnnouncementBar } from "./core/AnnouncementBar.astro";
 
 // Buttons
 export { default as Button } from "./buttons/Button.astro";
-
+export { default as GetAQuoteButton } from "./buttons/GetAQuoteButton.astro";
 // Cards
 export { default as FeatureCard } from "./cards/FeatureCard.astro";
 

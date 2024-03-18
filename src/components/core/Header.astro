@@ -1,6 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-const { navData, rightMenu } = Astro.props;
+
+export interface HeaderProps {
+  navData: any[]
+  rightMenu: boolean;
+}
+const { navData, rightMenu } = Astro.props as HeaderProps;
 ---
 
 <script type="module">

@@ -1,26 +1,26 @@
 ---
-import { Header, Button, Footer } from "@components/odyssey-theme";
-import Layout from "./Base.astro";
-import type { Props as BaseHeadProps } from "../components/head/BaseHead.astro";
+import { Header, GetAQuoteButton, Button, Footer } from "@components/odyssey-theme.js";
+import Base from "./Base.astro";
+import type { BaseHeadProps as BaseHeadProps } from "../components/head/BaseHead.astro";
 import Logo from "../components/Logo.astro";
-import settings from "../config/settings";
+import settings from "../config/site-settings.js";
 import { footerLists, footerSocials } from "../config/footer";
 
-export interface Props {
-  seo?: BaseHeadProps;
+export interface PageProps {
+  seo: BaseHeadProps;
 }
 
 import { nav } from "../config/nav.js";
 
-const { seo } = Astro.props as Props;
+const { seo } = Astro.props as PageProps;
 ---
 
-<Layout seo={seo}>
+<Base {seo}>
   <Header rightMenu navData={nav} slot="header">
     <span slot="logo">
       <Logo />
     </span>
-    <Button slot="action-item" href="/theme/get-started">Get Started</Button>
+    <GetAQuoteButton slot="action-item" />
   </Header>
   <div id="page">
     <slot />
@@ -36,4 +36,4 @@ const { seo } = Astro.props as Props;
   >
     <Logo slot="logo" />
   </Footer>
-</Layout>
+</Base>

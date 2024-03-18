@@ -1,6 +1,6 @@
 ---
-import ContactForm from "../../components/forms/ContactForm.astro";
-import Layout from "../../layouts/Page.astro";
+import ContactForm from "@components/forms/ContactForm.astro";
+import Page from "@layouts/Page.astro";
 import { Container } from "@components/odyssey-theme";
 
 const seo = {
@@ -9,7 +9,7 @@ const seo = {
 };
 ---
 
-<Layout seo={seo}>
+<Page seo={seo}>
   <Container>
     <section class="contact-hero__section">
       <div class="contact-hero__text-section">
@@ -34,7 +34,7 @@ const seo = {
       </div>
     </section>
   </Container>
-</Layout>
+</Page>
 
 <style>
   .contact-hero__section {

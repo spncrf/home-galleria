@@ -1,10 +1,10 @@
 import { defineCollection, z } from "astro:content";
 
+// Shared Collections
+
 const artworkCollection = defineCollection({
   type: "data",
   schema: z.object({
-    title: z.string(),
-    intro: z.string(),
     gallery: z.array(
       z.object({
         image: z.string(),
@@ -15,7 +15,20 @@ const artworkCollection = defineCollection({
   }),
 });
 
-const homeCollection = defineCollection({
+
+// Content Collections
+
+const about = defineCollection({
+  type: "data",
+  schema: z.object({
+    intro: z.string(),
+    page_title: z.string(),
+  }),
+});
+
+const clock = artworkCollection;
+
+const home = defineCollection({
   type: "data",
   schema: z.object({
     intro: z.string(),
@@ -26,16 +39,13 @@ const homeCollection = defineCollection({
   }),
 });
 
-const aboutCollection = defineCollection({
-  type: "data",
-  schema: z.object({
-    intro: z.string(),
-    page_title: z.string(),
-  }),
-});
+
+const mural = artworkCollection;
+
 
 export const collections = {
-  home: homeCollection,
-  artwork: artworkCollection,
-  about: aboutCollection,
+    about,
+    clock,
+    home,
+    mural
 };

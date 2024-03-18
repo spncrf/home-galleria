@@ -22,15 +22,11 @@ export const footerLists = [
     items: [
       {
         title: "About",
-        slug: "/company/about",
-      },
-      {
-        title: "Blog",
-        slug: "/blog",
+        slug: "/about",
       },
       {
         title: "Contact",
-        slug: "/company/contact",
+        slug: "/contact",
       },
     ],
   },

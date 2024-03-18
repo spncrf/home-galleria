@@ -1,9 +1,9 @@
 ---
-import settings from "../../config/settings.js";
+import settings from "../../config/site-settings.js";
 
 import "../../styles/index.css";
 
-export interface Props {
+export interface BaseHeadProps {
   title?: string;
   description?: string;
   canonicalURL?: URL | string;

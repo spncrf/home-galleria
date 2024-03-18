@@ -8,9 +8,10 @@
     ],
     "baseUrl": "src",
     "types": ["astro/client"],
+    "jsx": "react",
     "paths": {
-      "@config": ["config/*"],
-      "@icons": ["icons/*"],
+      "@config/*": ["config/*"],
+      "@icons/*": ["icons/*"],
       "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
