@@ -40,7 +40,7 @@ const {
       </div>
       {
         footerLists.map(list => (
-          <div>
+          <div class="footer-pages__container">
             <p>
               <strong>{list.title}</strong>
             </p>
@@ -65,7 +65,7 @@ const {
   footer {
     --footer-bg: var(--theme-primary);
     --footer-color: var(--theme-on-primary);
-    min-height: 40vh;
+    min-height: 35vh;
     background-color: var(--footer-bg);
     color: var(--footer-color);
     border-top-left-radius: var(--theme-shape-radius);
@@ -84,6 +84,10 @@ const {
   }
   .footer-socials__item {
     margin-right: 0.5rem;
+  }
+  .footer-brand__container,
+  .footer-pages__container {
+    margin-left: 0.6rem;
   }
   .footer-link__list {
     margin: 0;

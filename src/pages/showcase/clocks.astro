@@ -1,0 +1,15 @@
+---
+import Showcase from "../../layouts/Showcase.astro";
+import { getEntry } from "astro:content";
+
+const seo = {
+  title: "Clocks | Home Galleria",
+  description: "Clocks Page",
+};
+
+const {
+  data: { page_title, gallery_artwork },
+} = await getEntry("showcase_clock", "data");
+---
+
+<Showcase {seo} artworkReferences={gallery_artwork} {page_title} />

@@ -2,34 +2,55 @@
 import {
   Button,
   FormInput,
-  FormSelect,
+  FormMultiSelect,
   FormTextarea,
 } from "@components/odyssey-theme";
+import { Icon } from "astro-icon/components";
 
-const selectOptions = ["Google Search", "Social Media", "Email"];
+const interestOptions = [
+  { label: "Murals", name: "murals" },
+  { label: "Clocks", name: "clocks" },
+  { label: "Theme Rooms", name: "themeRooms" },
+  { label: "Other", name: "other" },
+];
 ---
 
 <form name="Contact Form" method="POST" action="/contact-thank-you">
-  <FormInput type="text" label="Name" name="Name" placeholder="John Doe" />
-  <FormInput
-    type="email"
-    label="Email"
-    name="Email"
-    placeholder="hello@example.com"
+  <div class="form-name-input__container">
+    <FormInput type="text" label="First Name" name="firstName" />
+    <FormInput type="text" label="Last Name" name="lastName" />
+  </div>
+  <FormInput type="email" label="Email" name="email" />
+  <FormMultiSelect
+    options={interestOptions}
+    legend="What are you interested in?"
   />
-  <FormSelect label="How Did You Hear About Us?" options={selectOptions} />
-  <FormTextarea
-    label="Message"
-    name="Message"
-    placeholder="Your message here..."
-  />
-  <Button>Submit</Button>
-</form>
+  <FormTextarea label="Message" name="Message" />
+  <div class="form-submit-button__container">
+    <Button customIcon={true}
+      >Submit
+      <Fragment slot="icon">
+        <Icon name="ic:baseline-chevron-right" />
+      </Fragment>
+    </Button>
+  </div>
 
-<style>
-  form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-</style>
+  <style>
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    div.form-name-input__container {
+      column-count: 2;
+    }
+    div.form-submit-button__container {
+      margin-left: auto;
+      margin-right: 2rem;
+    }
+
+    button.form-submit-button {
+      width: 10rem;
+    }
+  </style>
+</form>

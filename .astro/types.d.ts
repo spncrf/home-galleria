@@ -135,36 +135,66 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		
+		"artwork": {
+"my-bichon.md": {
+	id: "my-bichon.md";
+  slug: "my-bichon";
+  body: string;
+  collection: "artwork";
+  data: InferEntrySchema<"artwork">
+} & { render(): Render[".md"] };
+};
+
 	};
 
 	type DataEntryMap = {
 		"about": {
-"content": {
-	id: "content";
+"data": {
+	id: "data";
   collection: "about";
   data: InferEntrySchema<"about">
 };
 };
-"clock": {
-"content": {
-	id: "content";
-  collection: "clock";
-  data: InferEntrySchema<"clock">
+"contact": {
+"data": {
+	id: "data";
+  collection: "contact";
+  data: InferEntrySchema<"contact">
 };
 };
 "home": {
-"content": {
-	id: "content";
+"data": {
+	id: "data";
   collection: "home";
   data: InferEntrySchema<"home">
 };
 };
-"mural": {
-"content": {
-	id: "content";
-  collection: "mural";
-  data: InferEntrySchema<"mural">
+"quote": {
+"data": {
+	id: "data";
+  collection: "quote";
+  data: any
+};
+};
+"showcase_clock": {
+"data": {
+	id: "data";
+  collection: "showcase_clock";
+  data: InferEntrySchema<"showcase_clock">
+};
+};
+"showcase_mural": {
+"data": {
+	id: "data";
+  collection: "showcase_mural";
+  data: InferEntrySchema<"showcase_mural">
+};
+};
+"showcase_theme_room": {
+"data": {
+	id: "data";
+  collection: "showcase_theme_room";
+  data: InferEntrySchema<"showcase_theme_room">
 };
 };
 

@@ -8,7 +8,7 @@ export { default as AnnouncementBar } from "./core/AnnouncementBar.astro";
 
 // Buttons
 export { default as Button } from "./buttons/Button.astro";
-export { default as GetAQuoteButton } from "./buttons/GetAQuoteButton.astro";
+export { default as ContactButton } from "./buttons/ContactButton.astro";
 // Cards
 export { default as FeatureCard } from "./cards/FeatureCard.astro";
 
@@ -20,7 +20,7 @@ export { default as ThreeColumnTextSection } from "./sections/ThreeColumnTextSec
 export { default as YouTubeEmbedSection } from "./sections/YouTubeEmbedSection.astro";
 export { default as StickyTextImageSection } from "./sections/StickyTextImageSection.astro";
 export { default as CtaCardSection } from "./sections/CtaCardSection.astro";
-
+export { default as ShowcaseLinkSection } from "./sections/ShowcaseLinkSection.astro";
 // Blog
 export { default as BlogPostsList } from "./blog/BlogPostsList.astro";
 export { default as BlogPostPreview } from "./blog/BlogPostPreview.astro";
@@ -29,3 +29,7 @@ export { default as BlogPostPreview } from "./blog/BlogPostPreview.astro";
 export { default as FormInput } from "./form-fields/FormInput.astro";
 export { default as FormTextarea } from "./form-fields/FormTextarea.astro";
 export { default as FormSelect } from "./form-fields/FormSelect.astro";
+export { default as FormMultiSelect } from "./form-fields/FormMultiSelect.astro";
+
+// Gallery
+export { default as PhotoSwipe } from "./gallery/PhotoSwipe.astro";

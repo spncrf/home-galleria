@@ -1,5 +1,5 @@
 ---
-import settings from "../config/site-settings.js";
+import { SITE_SETTINGS } from "@config/consts";
 import { SkipLink } from "@components/odyssey-theme.js";
 import BaseHead from "../components/head/BaseHead.astro";
 import type { BaseHeadProps as BaseHeadProps } from "../components/head/BaseHead.astro";
@@ -11,7 +11,7 @@ export interface Props {
 const { seo } = Astro.props;
 ---
 
-<html lang="en" data-theme=`${settings.settings}`>
+<html lang="en" data-theme=`${SITE_SETTINGS.settings}`>
   <head>
     <BaseHead {...seo} />
   </head>

@@ -2,19 +2,17 @@
 import { Icon } from "astro-icon/components";
 
 export interface HeaderProps {
-  navData: any[]
-  rightMenu: boolean;
+  navData: any[];
 }
-const { navData, rightMenu } = Astro.props as HeaderProps;
+const { navData } = Astro.props as HeaderProps;
 ---
 
 <script type="module">
   const bodyElement = document.querySelector("body");
   const menuButton = document.querySelector("#menuButton");
-  const navHeader = document.querySelector("#odysseyNavHeader");
+  const navHeader = document.querySelector("#navHeader");
   const menuButtonIconHam = document.querySelector("#menuButtonIconHam");
   const menuButtonIconClose = document.querySelector("#menuButtonIconClose");
-  let scrollPosition = 0;
 
   menuButton.addEventListener("click", toggleMenu);
 
@@ -24,19 +22,10 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
 
     if (navHeader.hasAttribute("mobile-menu-open", true)) {
       menuButton.title = "Open Main Menu";
-      // unlock scroll position
       bodyElement.style.removeProperty("overflow");
       bodyElement.style.removeProperty("position");
-      bodyElement.style.removeProperty("top");
-      bodyElement.style.removeProperty("width");
-      window.scrollTo(0, scrollPosition);
     } else {
       menuButton.title = "Close Main Menu";
-      // lock scroll position
-      scrollPosition = window.pageYOffset;
-      bodyElement.style.overflow = "hidden";
-      bodyElement.style.position = "fixed";
-      bodyElement.style.top = `-${scrollPosition}px`;
       bodyElement.style.width = "100%";
     }
 
@@ -44,24 +33,21 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
   }
 </script>
 
-<header
-  id="odysseyNavHeader"
-  class={`${rightMenu ? "header--right" : ``.trim()}`}
->
+<header id="navHeader" class="sticky-header">
   <div class="header-logo-menu__container">
     <button id="menuButton" title="Open Main Menu">
-      <span id="menuButtonIconHam">
+      <div id="menuButtonIconHam">
         <Icon name="ic:baseline-menu" width={24} height={24} />
-      </span>
-      <span id="menuButtonIconClose" hidden>
+      </div>
+      <div id="menuButtonIconClose" hidden>
         <Icon name="ic:baseline-close" width={24} height={24} />
-      </span>
+      </div>
     </button>
     <a class="header-logo__link" href="/">
       <slot name="logo" />
     </a>
   </div>
-  <div class="header-nav__container">
+  <div class="header-nav_fullContainer">
     <slot name="nav">
       {
         navData && (
@@ -86,14 +72,21 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
 <style>
   header {
     width: 100%;
-    padding: 1rem 0.5rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  header.header--right {
+
+  .sticky-header {
+    background-color: var(--theme-surface-1);
+    position: sticky;
+    top: 0;
+    z-index: 100000;
+  }
+  header {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
   }
   .header-logo__link {
     width: fit-content;
@@ -107,12 +100,15 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
   }
   .header-action-item__container {
     z-index: 100;
+    padding-left: 0.8rem;
   }
   #menuButton {
     outline: none;
     border: none;
     background-color: transparent;
+    margin-top: 0.4rem;
     margin-right: 0.5rem;
+    -items: center;
     display: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -140,15 +136,15 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
   nav ul li a:hover {
     opacity: 1;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 910px) {
     #menuButton {
-      display: block;
+      display: flex;
       z-index: 100;
     }
-    .header-nav__container {
+    .header-nav_fullContainer {
       width: 100%;
       height: 100%;
-      background-color: var(--theme-bg);
+      background-color: var(--theme-surface-1);
       display: none;
       flex-direction: column;
       align-items: center;
@@ -157,7 +153,7 @@ const { navData, rightMenu } = Astro.props as HeaderProps;
       inset: 0;
       z-index: 99;
     }
-    header[mobile-menu-open] .header-nav__container {
+    header[mobile-menu-open] .header-nav_fullContainer {
       display: flex;
     }
     header[mobile-menu-open] nav ul {

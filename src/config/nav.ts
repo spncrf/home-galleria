@@ -1,14 +1,24 @@
+import { STATIC_SLUG } from "./consts";
+
 export const nav = [
   {
     title: "Home",
-    slug: "/",
+    slug: STATIC_SLUG.home,
   },
   {
     title: "About",
-    slug: "/about",
+    slug: STATIC_SLUG.about,
   },
   {
-    title: "Contact",
-    slug: "/contact",
+    title: "Murals",
+    slug: STATIC_SLUG.murals,
+  },
+  {
+    title: "Clocks",
+    slug: STATIC_SLUG.clocks,
+  },
+  {
+    title: "Theme Rooms",
+    slug: STATIC_SLUG.theme_rooms,
   },
 ];

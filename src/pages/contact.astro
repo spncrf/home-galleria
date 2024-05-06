@@ -1,10 +1,14 @@
 ---
+import { SITE_SETTINGS } from "@config/consts";
 import ContactForm from "../components/forms/ContactForm.astro";
 import Page from "../layouts/Page.astro";
 import { Container } from "@components/odyssey-theme";
 
+// Include picture
+// Textbox
+
 const seo = {
-  title: "Contact | Astro Odyssey Theme",
+  title: `Contact | Astro Odyssey Theme`,
   description: "Contact Page",
 };
 ---
@@ -22,9 +26,9 @@ const seo = {
         </p>
         <div>
           <p>
-            <em><a href="tel:8008675309">(800) 867-5309</a></em> • <em
-              ><a href="mailto:hello@odysseytheme.com">hello@ourcompany.com</a
-              ></em
+            <em>Email:
+              <a href="mailto:hello@odysseytheme.com">{SITE_SETTINGS.email}</a
+              ></emEmail:
             >
           </p>
         </div>

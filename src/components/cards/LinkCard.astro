@@ -1,0 +1,75 @@
+---
+import DImage from "@components/core/DImage.astro";
+
+export interface Props {
+  imgPath: any;
+  title: string;
+  href: string;
+}
+const { href, imgPath, title } = Astro.props;
+
+const altText = `Link to ${title} showcase`;
+const height = 400;
+const width = 400;
+---
+
+<style>
+  .link-card {
+    position: relative;
+    display: inline-flex;
+  }
+  .link_card__image {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .link-card__link {
+    display: flex;
+    text-decoration: none;
+  }
+
+  .link-card__overlay-title {
+    margin-bottom: 0;
+  }
+
+  .link-card__overlay {
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--theme-surface-1);
+    opacity: 0.67;
+    transition: opacity ease 150ms;
+  }
+
+  .link-card__overlay:hover {
+    opacity: 0;
+  }  
+
+  a.link-card__link img {
+    width:
+    max-width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  
+</style>
+<div class="link-card">
+  <a href={href} class="link-card__link">
+    <DImage alt={altText} imgPath={imgPath} height={height} width={width} />
+    <div class="link-card__overlay">
+      <h3 class="link-card__overlay-title">
+        {title}
+      </h3>
+    </div>
+  </a>
+</div>

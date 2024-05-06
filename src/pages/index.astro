@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import {
-  AnnouncementBar,
+  ShowcaseLinkSection,
   Button,
   CustomerQuoteSection,
   ThreeColumnTextSection,
@@ -12,23 +12,25 @@ import {
 import Layout from "@layouts/Page.astro";
 import TextAndImageHero from "@components/sections/heros/TextAndImageHero.astro";
 import { getEntry } from "astro:content";
+import { SITE_SETTINGS } from "@config/consts";
 
 const seo = {
-  title: "Landing Page #1 | Astro Odyssey Theme",
+  title: `Home Page | ${SITE_SETTINGS.brandName}`,
   description: "Landing Page #1 | Astro Odyssey Theme",
 };
 
-const homeContent = await getEntry("home", "content");
+const homeContent = await getEntry("home", "data");
 
-const { intro, gallery_links } = homeContent.data;
+// Intro blurb
+
+const { home_prelude, showcase_images } = homeContent.data;
 ---
 
 <script src="../utils/auth"></script>
 <Layout {seo}>
   <TextAndImageHero reversed>
     <div slot="text-container">
-      {intro}
-      {gallery_links.mural}
+      {home_prelude}
     </div>
     <div slot="btns-container">
       <Button href="/theme/get-started" customIcon
@@ -39,7 +41,7 @@ const { intro, gallery_links } = homeContent.data;
     </div>
     <picture slot="image-container">
       <img
-        src=`${gallery_links.mural}`
+        src=`${showcase_images.mural}`
         alt="Astro Odyssee"
         id="home-hero-image"
       />
@@ -49,13 +51,15 @@ const { intro, gallery_links } = homeContent.data;
   <CustomerQuoteSection
     quoteText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, vero nobis? Voluptas assumenda, voluptatibus commodi qui ducimus delectus praesentium maiores, impedit iure labore ratione, ea facilis numquam doloremque aperiam aspernatur."
     customerName="Happy Customer"
-  />
+  />i
+
+  <ShowcaseLinkSection links={showcase_images} />
 
   <ThreeColumnTextSection>
     <div slot="column-1-body">
       <h2>Why?</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
+        Lorem ipsum dolor sit amet consectetur adpisicing elit. Est dolorem
         tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
         consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
         mollitia cumque. Velit.

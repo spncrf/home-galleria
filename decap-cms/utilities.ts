@@ -4,27 +4,32 @@ import type {
   CmsCollectionFile,
 } from "decap-cms-core";
 
-const webmasterCollectionConfig = {
+const webmasterDataCollectionConfig = {
   delete: false,
   files: [],
 };
 
-type WMCollectionConfig = Omit<
+type WMDataCollectionConfig = Omit<
   CmsCollection,
-  keyof typeof webmasterCollectionConfig
+  keyof typeof webmasterDataCollectionConfig
 >;
+
+interface WMFolderCollectionConfig extends CmsCollection {
+  folder: string;
+  fields: CmsField[];
+}
 
 /**
  * Collections that have been created by the website's webmaster
  * @param collectionConfig
  * @returns
  */
-export const createDataCollection = (
-  collectionConfig: WMCollectionConfig,
+export const createFileCollection = (
+  collectionConfig: WMDataCollectionConfig,
 ): CmsCollection => {
   return {
     ...collectionConfig,
-    ...webmasterCollectionConfig,
+    ...webmasterDataCollectionConfig,
   };
 };
 
@@ -34,13 +39,27 @@ export const setPageContentFile = (
   contentFields: CmsField[],
 ): CmsCollection => {
   const { label, name } = collection;
-  const pageContentFile: CmsCollectionFile = {
-    name: `${name}_page_content`,
-    label: `${label} Page Content`,
-    file: `src/content/${name}/content.json`,
+  const pageContentDataFile: CmsCollectionFile = {
+    name: `${name}_page_content_data`,
+    label: `${label} Page Content Data`,
+    file: `src/content/${name}/data.json`,
     description: `Content for the ${label} Page`,
     fields: contentFields,
   };
-  collection.files = [pageContentFile];
+  collection.files = [pageContentDataFile];
   return collection;
+};
+
+export const createFolderCollection = (
+  collectionConfig: WMFolderCollectionConfig,
+): CmsCollection => {
+  const defaults: Partial<CmsCollection> = {
+    create: true,
+    delete: true,
+    extension: "md",
+  };
+  return {
+    ...defaults,
+    ...collectionConfig,
+  };
 };

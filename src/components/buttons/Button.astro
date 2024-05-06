@@ -1,14 +1,22 @@
 ---
-const { href, unelevated, outlined, customIcon, onPrimary, newTab } =
+export interface Props {
+  href?: string;
+  unelevated?: boolean;
+  outlined?: boolean;
+  customIcon?: boolean;
+  newTab?: boolean;
+}
+
+const { href, unelevated, outlined, customIcon, newTab } =
   Astro.props;
 
 const Tag = href ? "a" : "button";
 ---
 
 <Tag
-  class={`btn ${unelevated && `btn--unelevated`} ${
-    outlined && `btn--outlined`
-  } ${onPrimary && `btn--on-primary`}`}
+  class={`btn ${unelevated ? `btn--unelevated` : ""} ${
+    outlined ? `btn--outlined` : ""
+  }`}
   href={href}
   target={`${newTab ? "_blank" : ``}`}
   rel={`${newTab ? "noopener noreferrer" : ``}`}
@@ -37,8 +45,8 @@ const Tag = href ? "a" : "button";
     border-radius: var(--theme-button-border-radius);
     font-weight: 500;
   }
-  .btn:hover {
-    background-color: var(--theme-primary-hover);
+  .btn--inverted:hover {
+    background-color: var(--theme-on-primary);
   }
   .btn--unelevated {
     background-color: transparent;

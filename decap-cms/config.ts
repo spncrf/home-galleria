@@ -1,40 +1,78 @@
 import type { CmsConfig } from "decap-cms-core";
 import {
-  artworkCollectionPageContentFields,
+  showcaseCollectionPageContentFields,
   homeCollectionPageContentFields,
   aboutCollectionPageContentFields,
-} from "./consts";
-import { createDataCollection, setPageContentFile } from "./utilities";
+  contactCollectionPageContentFields,
+  artworkCollectionFields,
+} from "./fields";
+import {
+  createFolderCollection,
+  createFileCollection,
+  setPageContentFile,
+} from "./utilities";
 
 /** Collections */
 // Collections built using decorator pattern
 
+// Artwork
+let artworkCollection = createFolderCollection({
+  label: "Artwork",
+  name: "artwork",
+  folder: "src/content/artwork",
+  fields: artworkCollectionFields,
+  slug: "{{title}}",
+});
+
 // Home
-let homeCollection = createDataCollection({ label: "Home", name: "home" });
+let homeCollection = createFileCollection({ label: "Home", name: "home" });
 homeCollection = setPageContentFile(
   homeCollection,
   homeCollectionPageContentFields,
 );
 
 // About
-let aboutCollection = createDataCollection({ label: "About", name: "about" });
+let aboutCollection = createFileCollection({ label: "About", name: "about" });
 aboutCollection = setPageContentFile(
   aboutCollection,
   aboutCollectionPageContentFields,
 );
 
-// Mural
-let muralCollection = createDataCollection({ label: "Mural", name: "mural" });
-muralCollection = setPageContentFile(
-  muralCollection,
-  artworkCollectionPageContentFields,
+// Contact
+let contactCollection = createFileCollection({ label: "Contact", name: "contact" });
+contactCollection = setPageContentFile(
+  contactCollection,
+  contactCollectionPageContentFields,
 );
 
-// Clock
-let clockCollection = createDataCollection({ label: "Clock", name: "clock" });
-clockCollection = setPageContentFile(
-  clockCollection,
-  artworkCollectionPageContentFields,
+// Mural Showcase
+let muralShowcaseCollection = createFileCollection({
+  label: "Mural Showcase",
+  name: "showcase_mural",
+});
+muralShowcaseCollection = setPageContentFile(
+  muralShowcaseCollection,
+  showcaseCollectionPageContentFields("Mural"),
+);
+
+// Clock Showcase
+let clockShowcaseCollection = createFileCollection({
+  label: "Clock Showcase",
+  name: "showcase_clock",
+});
+clockShowcaseCollection = setPageContentFile(
+  clockShowcaseCollection,
+  showcaseCollectionPageContentFields("Clock"),
+);
+
+// Theme Room Showcase
+let themeRoomShowcaseCollection = createFileCollection({
+  label: "Theme Room Showcase",
+  name: "showcase_theme_room",
+});
+themeRoomShowcaseCollection = setPageContentFile(
+  themeRoomShowcaseCollection,
+  showcaseCollectionPageContentFields("Theme Room"),
 );
 
 /** Config */
@@ -59,10 +97,13 @@ const decapConfig: CmsConfig = {
   media_folder: "src/images",
   public_folder: "images",
   collections: [
-    aboutCollection,
-    muralCollection,
-    clockCollection,
+    artworkCollection,
     homeCollection,
+    aboutCollection,
+    contactCollection,
+    muralShowcaseCollection,
+    clockShowcaseCollection,
+    themeRoomShowcaseCollection,
   ],
 };
 

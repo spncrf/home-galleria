@@ -1,51 +1,70 @@
 import { defineCollection, z } from "astro:content";
 
+/**
+ *  Collections
+ *
+ * Each collection should match a spec described by a list of fields defined within decap-cms/fields
+ *
+ * TODO: Create interface to tightly couple the cms and run-time zod definitions
+ *
+ */
 // Shared Collections
 
-const artworkCollection = defineCollection({
+const showcaseCollection = defineCollection({
   type: "data",
   schema: z.object({
-    gallery: z.array(
-      z.object({
-        image: z.string(),
-        alt_text: z.string(),
-        description: z.string(),
-      }),
-    ),
-  }),
-});
-
-
-// Content Collections
-
-const about = defineCollection({
-  type: "data",
-  schema: z.object({
-    intro: z.string(),
     page_title: z.string(),
+    gallery_artwork: z.array(z.string()), // This string is a file name under artwork/*
   }),
 });
 
-const clock = artworkCollection;
+// Content Collection
+const artwork = defineCollection({
+  type: "content",
+  schema: z.object({
+    image_path: z.string(),
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+  }),
+});
 
+// Data Collection
 const home = defineCollection({
   type: "data",
   schema: z.object({
-    intro: z.string(),
-    gallery_links: z.object({
-      mural: z.string(),
+    home_prelude: z.string(),
+    showcase_images: z.object({
+      mural: z.string(),  // file name in src/images
       clock: z.string(),
     }),
   }),
 });
 
+const about = defineCollection({
+  type: "data",
+  schema: z.object({
+    page_title: z.string(),
+    about_text: z.string(),
+    about_picture: z.string()
+  }),
+});
 
-const mural = artworkCollection;
+const contact = defineCollection({
+  type: "data",
+  schema: z.object({
+    page_title: z.string(),
+    contact_prelude: z.string(),
+  }),
+});
 
-
+// Each entry here should be a sibling folder name
 export const collections = {
-    about,
-    clock,
-    home,
-    mural
+  about,
+  home,
+  contact,
+  artwork,
+  showcase_mural: showcaseCollection,
+  showcase_clock: showcaseCollection,
+  showcase_theme_room: showcaseCollection,
 };

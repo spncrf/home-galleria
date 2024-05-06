@@ -1,0 +1,14 @@
+---
+import { getEntry } from "astro:content";
+import Showcase from "@layouts/Showcase.astro";
+const seo = {
+  title: "Murals | Home Galleria",
+  description: "Murals Page",
+};
+
+const {
+  data: { page_title, gallery_artwork },
+} = await getEntry("showcase_mural", "data");
+---
+
+<Showcase {seo} {page_title} artworkReferences={gallery_artwork} />

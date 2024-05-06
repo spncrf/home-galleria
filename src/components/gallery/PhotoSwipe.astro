@@ -1,0 +1,63 @@
+---
+export interface Props {
+  galleryId: string;
+  thumbnail: {
+    width: number;
+    height: number;
+  };
+  entries: {
+    src: string;
+    width: number;
+    height: number;
+    description: string;
+    date: string;
+  }[];
+}
+
+const { entries, thumbnail, galleryId } = Astro.props;
+
+// TODO: Remove the requirement to add ../node_modules for imports
+---
+
+<link rel="stylesheet" href="../node_modules/photoswipe/dist/photoswipe.css" />
+<script type="module" define:vars={{ galleryId }}>
+  import PhotoSwipeLightbox from "../node_modules/photoswipe/dist/photoswipe-lightbox.esm.js";
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: `#${galleryId}`,
+    children: "a",
+    pswpModule: () =>
+      import("../node_modules/photoswipe/dist/photoswipe.esm.js"),
+  });
+  lightbox.init();
+</script>
+<style>
+  .pswp-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 2rem;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+</style>
+<div id={galleryId} class="pswp-gallery">
+  {
+    entries.map(entry => (
+      <a
+        href={entry.src}
+        data-pswp-width={entry.width}
+        data-pswp-height={entry.height}
+        target="_blank"
+      >
+        <img
+          src={entry.src}
+          width={thumbnail.width}
+          height={thumbnail.height}
+        />
+      </a>
+    ))
+  }
+</div>

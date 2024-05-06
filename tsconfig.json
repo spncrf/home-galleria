@@ -10,6 +10,7 @@
     "types": ["astro/client"],
     "jsx": "react",
     "paths": {
+      "@types/*": ["@types/*"],
       "@config/*": ["config/*"],
       "@icons/*": ["icons/*"],
       "@lib/*": ["lib/*"],
@@ -18,7 +19,8 @@
       "@layouts/*": ["layouts/*"],
       "@assets/*": ["assets/*"],
       "@pages/*": ["pages/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@images/*": ["images/*"]
     }
   }
 }

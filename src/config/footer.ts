@@ -1,33 +1,40 @@
+import { SOCIAL_LINKS, STATIC_SLUG } from "./consts";
+import { nav } from "./nav";
+
 export const footerSocials = [
   {
-    name: "Twitter",
-    url: "https://twitter.com/<handle>",
-    icon: "mdi:twitter",
+    name: "Instagram",
+    url: SOCIAL_LINKS.instagram,
+    icon: "mdi:instagram",
   },
   {
-    name: "Youtube",
-    url: "https://youtube.com/c/<handle>",
-    icon: "mdi:youtube",
+    name: "Facebook",
+    url: SOCIAL_LINKS.facebook,
+    icon: "mdi:facebook",
   },
   {
-    name: "Github",
-    url: "https://github.com/<handle>",
-    icon: "mdi:github",
+    name: "Email",
+    url: SOCIAL_LINKS.email,
+    icon: "mdi:email",
   },
 ];
 
 export const footerLists = [
   {
-    title: "Company",
+    title: "Home Galleria",
     items: [
       {
         title: "About",
-        slug: "/about",
+        slug: STATIC_SLUG.about,
       },
       {
         title: "Contact",
-        slug: "/contact",
+        slug: STATIC_SLUG.contact,
       },
     ],
+  },
+  {
+    title: "Showcase",
+    items: nav.filter(navItem => navItem.slug.includes("showcase")),
   },
 ];

@@ -1,0 +1,41 @@
+---
+import { FormInput } from "@components/odyssey-theme";
+
+export interface Props {
+  legend: string;
+  required?: boolean;
+  options: {
+    label: string;
+    name: string;
+  }[];
+}
+
+const { options, legend, required } = Astro.props;
+---
+
+<style scoped="false">
+  .form-multi-select__container > div.form-multi-select__option {
+    padding-top: 0.5rem;
+  }
+</style>
+
+<div>
+  <label>{legend}</label>
+  <div class="form-multi-select__container">
+    {
+      options.map(option => {
+        return (
+          <div class="form-multi-select__option">
+            <FormInput
+              type="checkbox"
+              label={option.label}
+              labelAfter={true}
+              inline={true}
+              name={option.name}
+            />
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

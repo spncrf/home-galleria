@@ -1,0 +1,43 @@
+---
+import { Container, PhotoSwipe } from "@components/odyssey-theme";
+import { getImageFromPath } from "@utils/images";
+import { getArtworkEntries } from "@utils/artwork";
+import Page from "./Page.astro";
+import type { BaseHeadProps } from "@components/head/BaseHead.astro";
+
+export type Props = {
+  seo: BaseHeadProps;
+  page_title: string;
+  artworkReferences: string[];
+};
+
+const { page_title, artworkReferences, seo } = Astro.props;
+
+const artworkEntries = await getArtworkEntries(artworkReferences);
+
+const galleryEntries = await Promise.all(
+  artworkEntries.map(async artworkEntry => {
+    const img = await getImageFromPath(artworkEntry.image_path);
+    const { src, width, height } = img.default;
+    return {
+      src,
+      width,
+      height,
+      description: artworkEntry.description,
+      date: artworkEntry.date,
+    };
+  }),
+);
+
+const thumbnail = { height: 400, width: 400 };
+---
+
+<Page {seo}>
+  <h2>
+    {page_title}
+  </h2>
+  <Container>
+    <PhotoSwipe galleryId={page_title} entries={galleryEntries} {thumbnail} />
+  </Container>
+  <slot />
+</Page>

@@ -1,9 +1,13 @@
 ---
-import { Header, GetAQuoteButton, Button, Footer } from "@components/odyssey-theme.js";
+import {
+  Header,
+  Footer,
+  ContactButton,
+} from "@components/odyssey-theme.js";
+import { SITE_SETTINGS } from "@config/consts";
 import Base from "./Base.astro";
 import type { BaseHeadProps as BaseHeadProps } from "../components/head/BaseHead.astro";
 import Logo from "../components/Logo.astro";
-import settings from "../config/site-settings.js";
 import { footerLists, footerSocials } from "../config/footer";
 
 export interface PageProps {
@@ -14,13 +18,17 @@ import { nav } from "../config/nav.js";
 
 const { seo } = Astro.props as PageProps;
 ---
-
+<style>
+  div#page {
+    min-height: 60vh;
+  }
+</style>
 <Base {seo}>
-  <Header rightMenu navData={nav} slot="header">
+  <Header menuType={"compressed"} navData={nav} slot="header">
     <span slot="logo">
       <Logo />
     </span>
-    <GetAQuoteButton slot="action-item" />
+    <ContactButton slot="action-item" />
   </Header>
   <div id="page">
     <slot />
@@ -31,8 +39,7 @@ const { seo } = Astro.props as PageProps;
     color="var(--theme-on-surface-1)"
     footerLists={footerLists}
     footerSocials={footerSocials}
-    copyrightName={settings.name}
-    d
+    copyrightName={SITE_SETTINGS.name}
   >
     <Logo slot="logo" />
   </Footer>
