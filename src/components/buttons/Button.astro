@@ -7,8 +7,7 @@ export interface Props {
   newTab?: boolean;
 }
 
-const { href, unelevated, outlined, customIcon, newTab } =
-  Astro.props;
+const { href, unelevated, outlined, customIcon, newTab } = Astro.props;
 
 const Tag = href ? "a" : "button";
 ---
@@ -44,6 +43,7 @@ const Tag = href ? "a" : "button";
     border: none;
     border-radius: var(--theme-button-border-radius);
     font-weight: 500;
+    font-size: var(--font-size-sm);
   }
   .btn--inverted:hover {
     background-color: var(--theme-on-primary);

@@ -10,6 +10,7 @@ export interface Props {
     width: number;
     height: number;
     description: string;
+    title: string;
     date: string;
   }[];
 }
@@ -22,40 +23,116 @@ const { entries, thumbnail, galleryId } = Astro.props;
 <link rel="stylesheet" href="../node_modules/photoswipe/dist/photoswipe.css" />
 <script type="module" define:vars={{ galleryId }}>
   import PhotoSwipeLightbox from "../node_modules/photoswipe/dist/photoswipe-lightbox.esm.js";
+
   const lightbox = new PhotoSwipeLightbox({
     gallery: `#${galleryId}`,
     children: "a",
+    bgClickAction: "close",
+
+    showHideAnimationType: "fade",
     pswpModule: () =>
       import("../node_modules/photoswipe/dist/photoswipe.esm.js"),
+  });
+
+  let captionElement = null;
+
+  const updateCaptionText = () => {
+    const currSlideElement = lightbox.pswp.currSlide.data.element;
+
+    console.log(captionElement);
+    if (captionElement) {
+      // get caption from alt attribute
+      const captionText = currSlideElement
+        .querySelector("img")
+        .getAttribute("alt");
+
+      if (captionText) {
+
+        // figure out where to play it
+        const lightboxImageHeight = lightbox.pswp.currSlide.prevDisplayedHeight;
+        const bottomSpace = (window.innerHeight - lightboxImageHeight) / 2;
+        const distanceFromImage = 30;
+        const textHeight = 44;
+        const distanceFromBotton = Math.max(
+          0,
+          bottomSpace - textHeight - distanceFromImage
+        );
+
+        captionElement.style.bottom = `${distanceFromBotton}px`;
+        captionElement.innerHTML = `<div class="pswp-text">${captionText}</div>`;
+      } else {
+        captionElement.innerHTML = "";
+      }
+    }
+  };
+
+  lightbox.on("uiRegister", function () {
+    lightbox.pswp.ui.registerElement({
+      name: "custom-caption",
+      order: 9,
+      isButton: false,
+      appendTo: "root",
+      html: "Caption text",
+      onInit: el => {
+        captionElement = el;
+        lightbox.pswp.on("change", () => {
+          updateCaptionText();
+        });
+      },
+    });
+  });
+
+  lightbox.on("imageSizeChange", () => {
+    updateCaptionText();
+  });
+
+  lightbox.on("close", () => {
+    const pswp = lightbox.pswp;
+    const yOffset = -100;
+    const currentImage = pswp.currSlide.data.element;
+    if (currentImage) {
+      const y =
+        currentImage.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
   });
   lightbox.init();
 </script>
 <style>
+  .gallery-entry {
+    padding: 5px;
+  }
+
   .pswp-gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
-    gap: 2rem;
+    justify-content: space-around;
+    row-gap: 1rem;
+    flex: 1;
   }
 
   img {
     object-fit: cover;
     object-position: 50% 50%;
+    border-radius: calc(var(--theme-shape-radius) / 2);
+    border: 2px solid rgba(0, 0, 0, 0.25);
   }
 </style>
 <div id={galleryId} class="pswp-gallery">
   {
-    entries.map(entry => (
+    entries.map((entry, index) => (
       <a
         href={entry.src}
         data-pswp-width={entry.width}
         data-pswp-height={entry.height}
         target="_blank"
+        class="gallery-entry"
       >
         <img
           src={entry.src}
-          width={thumbnail.width}
-          height={thumbnail.height}
+          width={`${thumbnail.width}`}
+          height={`${thumbnail.height}`}
+          alt={entry.title}
         />
       </a>
     ))

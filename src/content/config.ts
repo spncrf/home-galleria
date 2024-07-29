@@ -23,8 +23,8 @@ const artwork = defineCollection({
   type: "content",
   schema: z.object({
     image_path: z.string(),
-    title: z.string(),
-    description: z.string(),
+    title: z.string().max(35),
+    description: z.string().transform((v) => v ?? ''),
     date: z.string(),
   }),
 });

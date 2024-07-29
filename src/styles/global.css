@@ -20,3 +20,35 @@ pre {
 pre .language-id {
   display: none;
 }
+
+
+/* Photo Swipe */
+
+.pswp__custom-caption {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.pswp-text {
+  display: flex;
+  font-size: var(--font-size-sm);
+  width: 80%;
+  min-width: 320px;
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--theme-surface-2);
+  color: var(--theme-on-surface-2);
+  overflow: hidden;
+  justify-content: center;
+}
+
+.pswp__custom-caption a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.hidden-caption-content {
+  display: none;
+}

@@ -99,6 +99,7 @@ export const artworkCollectionFields: CmsField[] = [
     name: "title",
     label: "Artwork Name",
     widget: "string",
+    pattern: ['^.{0,35}$', "No more than 35 characters"]
   },
   {
     name: "description",

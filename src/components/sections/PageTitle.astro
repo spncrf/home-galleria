@@ -1,0 +1,21 @@
+---
+import Container from "../core/Container.astro";
+
+export type Props = {
+  pageTitle: string;
+};
+
+const { pageTitle } = Astro.props;
+---
+
+<Container>
+  <section class="page-title">
+    <h2>{pageTitle}</h2>
+  </section>
+</Container>
+
+<style>
+  .page-title {
+    padding-bottom: 1rem;
+  }
+</style>

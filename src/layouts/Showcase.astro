@@ -4,6 +4,7 @@ import { getImageFromPath } from "@utils/images";
 import { getArtworkEntries } from "@utils/artwork";
 import Page from "./Page.astro";
 import type { BaseHeadProps } from "@components/head/BaseHead.astro";
+import PageTitle from "@components/sections/PageTitle.astro";
 
 export type Props = {
   seo: BaseHeadProps;
@@ -13,7 +14,9 @@ export type Props = {
 
 const { page_title, artworkReferences, seo } = Astro.props;
 
-const artworkEntries = await getArtworkEntries(artworkReferences);
+const entries = await getArtworkEntries(artworkReferences);
+
+let artworkEntries = [...entries, ...entries, ...entries];
 
 const galleryEntries = await Promise.all(
   artworkEntries.map(async artworkEntry => {
@@ -23,21 +26,20 @@ const galleryEntries = await Promise.all(
       src,
       width,
       height,
+      title: artworkEntry.title,
       description: artworkEntry.description,
       date: artworkEntry.date,
     };
-  }),
+  })
 );
 
-const thumbnail = { height: 400, width: 400 };
+const thumbnail = { height: 300, width: 300 };
 ---
 
 <Page {seo}>
-  <h2>
-    {page_title}
-  </h2>
+  <PageTitle pageTitle={page_title} />
   <Container>
-    <PhotoSwipe galleryId={page_title} entries={galleryEntries} {thumbnail} />
+      <PhotoSwipe galleryId={page_title} entries={galleryEntries} {thumbnail} />
   </Container>
   <slot />
 </Page>
