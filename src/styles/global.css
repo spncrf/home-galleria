@@ -35,13 +35,14 @@ pre .language-id {
   display: flex;
   font-size: var(--font-size-sm);
   width: 80%;
-  min-width: 320px;
+  min-width: 305px;
   padding: 10px;
   border-radius: 4px;
-  background: var(--theme-surface-2);
-  color: var(--theme-on-surface-2);
+  background: var(--theme-surface-1);
+  color: var(--theme-on-surface-1);
   overflow: hidden;
   justify-content: center;
+  opacity: 0.95;
 }
 
 .pswp__custom-caption a {

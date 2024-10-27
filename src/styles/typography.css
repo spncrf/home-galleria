@@ -136,6 +136,10 @@ p {
   margin: 0 0 1rem 0;
 }
 
+p {
+  font-size: var(--font-size-base);
+}
+
 blockquote {
   font-style: italic;
   font-size: var(--font-size-base);

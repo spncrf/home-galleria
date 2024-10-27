@@ -8,13 +8,18 @@ import { defineCollection, z } from "astro:content";
  * TODO: Create interface to tightly couple the cms and run-time zod definitions
  *
  */
+
+
+const artwork_image = z.string();  // This string is a file path to artwork/*
+const website_image = z.string(); // This string is a file path to src/images
+
 // Shared Collections
 
 const showcaseCollection = defineCollection({
   type: "data",
   schema: z.object({
     page_title: z.string(),
-    gallery_artwork: z.array(z.string()), // This string is a file name under artwork/*
+    gallery_artwork: z.array(artwork_image)
   }),
 });
 
@@ -22,7 +27,7 @@ const showcaseCollection = defineCollection({
 const artwork = defineCollection({
   type: "content",
   schema: z.object({
-    image_path: z.string(),
+    image_path: artwork_image,
     title: z.string().max(35),
     description: z.string().transform((v) => v ?? ''),
     date: z.string(),
@@ -35,8 +40,8 @@ const home = defineCollection({
   schema: z.object({
     home_prelude: z.string(),
     showcase_images: z.object({
-      mural: z.string(),  // file name in src/images
-      clock: z.string(),
+      mural: website_image,
+      clock: website_image,
     }),
   }),
 });
@@ -45,8 +50,9 @@ const about = defineCollection({
   type: "data",
   schema: z.object({
     page_title: z.string(),
-    about_text: z.string(),
-    about_picture: z.string()
+    intro_md: z.string(),
+    intro_image: website_image,
+    bio_md: z.string()
   }),
 });
 
@@ -54,7 +60,8 @@ const contact = defineCollection({
   type: "data",
   schema: z.object({
     page_title: z.string(),
-    contact_prelude: z.string(),
+    contact_md: z.string(),
+    success_md: z.string()
   }),
 });
 

@@ -1,0 +1,27 @@
+---
+import { Button, Container, TextCardSection } from "@components/odyssey-theme";
+import Layout from "layouts/Page.astro";
+import { getEntry } from "astro:content";
+import { SITE_SETTINGS } from "@config/consts";
+import { Markdown } from "@astropub/md";
+
+const {
+  data: { page_title, success_md },
+} = await getEntry("contact", "data");
+
+const seo = {
+  title: `${page_title} | ${SITE_SETTINGS.brandName}`,
+  description: "Contact Page",
+};
+---
+
+<Layout {seo}>
+  <Container>
+    <TextCardSection>
+      <Markdown of={success_md} />
+      <div class="cta-buttons__container">
+        <Button href="/"> Return Home </Button>
+        </div>
+    </TextCardSection>
+  </Container>
+</Layout>

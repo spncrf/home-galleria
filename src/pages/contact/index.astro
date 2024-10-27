@@ -1,0 +1,62 @@
+---
+import { SITE_SETTINGS } from "@config/consts";
+import ContactForm from "components/forms/ContactForm.astro";
+import Page from "layouts/Page.astro";
+import { Container } from "@components/odyssey-theme";
+import { getEntry } from "astro:content";
+import { Markdown } from "@astropub/md";
+
+// Include picture
+// Textbox
+
+const {
+  data: { page_title, contact_md },
+} = await getEntry("contact", "data");
+
+const seo = {
+  title: `${page_title} | ${SITE_SETTINGS.brandName}`,
+  description: "Contact Page",
+};
+---
+
+<Page seo={seo}>
+  <Container>
+    <section class="contact-hero__section">
+      <div class="contact-hero__text-section">
+        <Markdown of={contact_md} />
+        </div>
+        <div class="col-2__container">
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </Container>
+
+  <style>
+    .contact-hero__section {
+      margin: var(--section-margin) auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(90vh - var(--navbar-height));
+      gap: 3rem;
+    }
+    .contact-hero__text-section {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: var(--theme-surface-1);
+      border-radius: var(--theme-shape-radius);
+    }
+    .col-2__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .contact-hero__section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Page>

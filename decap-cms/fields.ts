@@ -47,14 +47,19 @@ export const aboutCollectionPageContentFields: CmsField[] = [
     widget: "string",
   },
   {
-    name: "about_text",
-    label: "About Text",
-    widget: "text",
+    name: "intro_md",
+    label: "Intro Text",
+    widget: "markdown",
   },
   {
-    name: "about_picture",
-    label: "About Picture",
+    name: "intro_image",
+    label: "Intro Picture",
     widget: "image"
+  },
+  {
+    name: "bio_md",
+    label: 'Biography',
+    widget: "markdown"
   }
 ];
 
