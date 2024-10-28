@@ -19,12 +19,15 @@ const { links } = Astro.props;
     gap: 2rem;
   }
 </style>
-<section class="showcase-link__section">
-  <LinkCard imgPath={links.clock} title="Clocks" href={STATIC_SLUG.clocks} />
-  <LinkCard imgPath={links.mural} title="Murals" href={STATIC_SLUG.murals} />
-  <LinkCard
-    imgPath={links.theme_room}
-    title="Theme Rooms"
-    href={STATIC_SLUG.theme_rooms}
-  />
+<section>
+  <h2>Features</h2>
+  <div class="showcase-link__section">
+    <LinkCard imgPath={links.clock} title="Clocks" href={STATIC_SLUG.clocks} />
+    <LinkCard imgPath={links.mural} title="Murals" href={STATIC_SLUG.murals} />
+    <LinkCard
+      imgPath={links.theme_room}
+      title="Theme Rooms"
+      href={STATIC_SLUG.theme_rooms}
+    />
+  </div>
 </section>

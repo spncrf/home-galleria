@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 export interface Props {
   imgPath: string;
   alt: string;
-  cssClasses: string[];
+  cssClasses?: string[];
 }
 
 const { imgPath, alt, cssClasses } = Astro.props;

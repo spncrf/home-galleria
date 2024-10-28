@@ -1,4 +1,6 @@
 ---
+import { STATIC_SLUG } from "@config/consts";
+
 export interface Props {
   galleryId: string;
   thumbnail: {
@@ -12,6 +14,7 @@ export interface Props {
     description: string;
     title: string;
     date: string;
+    slug: string;
   }[];
 }
 
@@ -21,7 +24,7 @@ const { entries, thumbnail, galleryId } = Astro.props;
 ---
 
 <link rel="stylesheet" href="../node_modules/photoswipe/dist/photoswipe.css" />
-<script type="module" define:vars={{ galleryId }}>
+<script type="module" define:vars={{ galleryId, STATIC_SLUG }}>
   import PhotoSwipeLightbox from "../node_modules/photoswipe/dist/photoswipe-lightbox.esm.js";
 
   const lightbox = new PhotoSwipeLightbox({
@@ -35,6 +38,7 @@ const { entries, thumbnail, galleryId } = Astro.props;
   });
 
   let captionElement = null;
+  let artworkLinkElement = null;
 
   const updateCaptionText = () => {
     const currSlideElement = lightbox.pswp.currSlide.data.element;
@@ -64,10 +68,25 @@ const { entries, thumbnail, galleryId } = Astro.props;
     }
   };
 
+  const updateArtworkLink = () => {
+    const currSlideElement = lightbox.pswp.currSlide.data.element;
+
+    if (artworkLinkElement) {
+      // get slug from data-slug-attribute
+      const slug = currSlideElement
+        .querySelector("img")
+        .getAttribute("data-slug");
+
+      if (slug) {
+        const artworkEntryLink = `${STATIC_SLUG.artwork}/${slug}`;
+        artworkLinkElement.setAttribute("href", artworkEntryLink);
+      }
+    }
+  };
+
   lightbox.on("uiRegister", function () {
     lightbox.pswp.ui.registerElement({
       name: "custom-caption",
-      order: 9,
       isButton: false,
       appendTo: "root",
       html: "Caption text",
@@ -75,6 +94,26 @@ const { entries, thumbnail, galleryId } = Astro.props;
         captionElement = el;
         lightbox.pswp.on("change", () => {
           updateCaptionText();
+        });
+      },
+    });
+
+    lightbox.pswp.ui.registerElement({
+      name: "artwork-link",
+      order: 8,
+      isButton: true,
+      tagName: "a",
+      title: "Artwork Link",
+      html: {
+        isCustomSVG: true,
+        inner:
+          '<path d="M7.05025 1.53553C8.03344 0.552348 9.36692 0 10.7574 0C13.6528 0 16 2.34721 16 5.24264C16 6.63308 15.4477 7.96656 14.4645 8.94975L12.4142 11L11 9.58579L13.0503 7.53553C13.6584 6.92742 14 6.10264 14 5.24264C14 3.45178 12.5482 2 10.7574 2C9.89736 2 9.07258 2.34163 8.46447 2.94975L6.41421 5L5 3.58579L7.05025 1.53553Z" fill="currentColor"></path> <path d="M7.53553 13.0503L9.58579 11L11 12.4142L8.94975 14.4645C7.96656 15.4477 6.63308 16 5.24264 16C2.34721 16 0 13.6528 0 10.7574C0 9.36693 0.552347 8.03344 1.53553 7.05025L3.58579 5L5 6.41421L2.94975 8.46447C2.34163 9.07258 2 9.89736 2 10.7574C2 12.5482 3.45178 14 5.24264 14C6.10264 14 6.92742 13.6584 7.53553 13.0503Z" fill="currentColor"></path> <path d="M5.70711 11.7071L11.7071 5.70711L10.2929 4.29289L4.29289 10.2929L5.70711 11.7071Z" fill="currentColor"></path>',
+      },
+      onInit: el => {
+        artworkLinkElement = el;
+        artworkLinkElement.setAttribute("target", "__blank");
+        lightbox.pswp.on("change", () => {
+          updateArtworkLink();
         });
       },
     });
@@ -131,6 +170,7 @@ const { entries, thumbnail, galleryId } = Astro.props;
           width={`${thumbnail.width}`}
           height={`${thumbnail.height}`}
           alt={entry.title}
+          data-slug={entry.slug}
         />
       </a>
     ))

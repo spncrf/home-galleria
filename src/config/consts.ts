@@ -6,6 +6,7 @@ export const STATIC_SLUG = {
   theme_rooms: "/showcase/theme_rooms",
   clocks: "/showcase/clocks",
   murals: "/showcase/murals",
+  artwork: "/artwork", // sub pages are dynamic
 } as const;
 
 export const SITE_SETTINGS = {

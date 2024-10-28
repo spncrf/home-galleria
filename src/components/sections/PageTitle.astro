@@ -8,11 +8,9 @@ export type Props = {
 const { pageTitle } = Astro.props;
 ---
 
-<Container>
-  <section class="page-title">
-    <h2>{pageTitle}</h2>
-  </section>
-</Container>
+<div class="page-title">
+  <h2>{pageTitle}</h2>
+</div>
 
 <style>
   .page-title {

@@ -1,1 +1,114 @@
-<div>Test</div>
+---
+import Card from "@components/cards/Card.astro";
+import DImage from "@components/core/DImage.astro";
+import { Container } from "@components/odyssey-theme";
+import PageTitle from "@components/sections/PageTitle.astro";
+import { SITE_SETTINGS } from "@config/consts";
+import Page from "@layouts/Page.astro";
+import { getArtworkEntry } from "@utils/artwork";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const allArtworkEntries = await getCollection("artwork");
+  return allArtworkEntries.map(artworkEntry => ({
+    params: {
+      slug: artworkEntry.slug,
+    },
+  }));
+};
+
+const { slug } = Astro.params;
+
+const artworkEntry = await getArtworkEntry(slug);
+
+const { image_path, title, description, date } = artworkEntry;
+
+const seo = {
+  title: `${title} | ${SITE_SETTINGS.brandName}`,
+  description: `${title} for ${SITE_SETTINGS.brandName}`,
+};
+---
+
+<style>
+  .artwork-view {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .artwork-view__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: max-content;
+  }
+
+  .artwork-view__image {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .artwork-view__image-wrapper {
+    border: 2px solid var(--theme-on-surface-2);
+  }
+
+  .artwork-view__image-caption {
+    margin-left: auto;
+    font-style: italic;
+    padding: 1rem 0;
+  }
+
+  .artwork-view__image-description {
+    padding: 1rem;
+  }
+</style>
+<style is:global>
+  .artwork-view__size {
+    height: 300px;
+    width: 300px;
+  }
+  @media (min-width: 726px) {
+    .artwork-view__size {
+      height: 400px;
+      width: 400px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .artwork-view__size {
+      height: 300px;
+      width: 300px;
+    }
+  }
+  @media (max-width: 1440px) {
+    .artwork-view__size {
+      height: 400px;
+      width: 400px;
+    }
+  }
+</style>
+
+<Page seo={seo}>
+  <Container>
+    <PageTitle pageTitle={title} />
+    <section class="artwork-view">
+      <div class="artwork-view__container">
+        <div class="artwork-view__image">
+          <div class="artwork-view__image-wrapper">
+            <DImage alt={`Image of ${title}`} imgPath={image_path} />
+          </div>
+          <div class="artwork-view__image-caption">
+            {date}
+          </div>
+        </div>
+        <div class="artwork-view__image-description">
+          <Card>
+            {
+              "Lorem ipsum odor amet, consectetuer adipiscing elit. Auctor ipsum faucibus diam auctor est fusce ligula malesuada. Lectus dolor cubilia ornare nisl, odio purus finibus per? Dis eget imperdiet habitasse ipsum purus phasellus varius amet dictumst. Phasellus eros ex nam inceptos etiam habitasse luctus dui. Sociosqu tortor praesent volutpat class tempor duis neque semper. Lacinia metus pretium phasellus torquent auctor aptent mattis. Fermentum sodales facilisi vehicula auctor tortor. Facilisi id primis bibendum natoque nisi; neque facilisis sem"
+            }
+          </Card>
+        </div>
+      </div>
+    </section>
+  </Container>
+</Page>

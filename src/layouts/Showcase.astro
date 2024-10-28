@@ -34,6 +34,7 @@ const galleryEntries = await Promise.all(
       title: artworkEntry.title,
       description: artworkEntry.description,
       date: artworkEntry.date,
+      slug: artworkEntry.slug,
     };
   }),
 );
@@ -42,8 +43,8 @@ const thumbnail = { height: 300, width: 300 };
 ---
 
 <Page {seo}>
-  <PageTitle pageTitle={page_title} />
   <Container>
+    <PageTitle pageTitle={page_title} />
     {
       galleryEntries.length > 0 ? (
         <PhotoSwipe

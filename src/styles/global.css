@@ -42,6 +42,7 @@ pre .language-id {
   overflow: hidden;
   justify-content: center;
   opacity: 0.95;
+  max-width: 1000px;
 }
 
 .pswp__custom-caption a {
