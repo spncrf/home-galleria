@@ -39,7 +39,6 @@ const { entries, thumbnail, galleryId } = Astro.props;
   const updateCaptionText = () => {
     const currSlideElement = lightbox.pswp.currSlide.data.element;
 
-    console.log(captionElement);
     if (captionElement) {
       // get caption from alt attribute
       const captionText = currSlideElement
@@ -47,15 +46,14 @@ const { entries, thumbnail, galleryId } = Astro.props;
         .getAttribute("alt");
 
       if (captionText) {
-
-        // figure out where to play it
+        // figure out where to place it
         const lightboxImageHeight = lightbox.pswp.currSlide.prevDisplayedHeight;
         const bottomSpace = (window.innerHeight - lightboxImageHeight) / 2;
         const distanceFromImage = 30;
         const textHeight = 44;
         const distanceFromBotton = Math.max(
           0,
-          bottomSpace - textHeight - distanceFromImage
+          bottomSpace - textHeight - distanceFromImage,
         );
 
         captionElement.style.bottom = `${distanceFromBotton}px`;

@@ -54,13 +54,13 @@ export const aboutCollectionPageContentFields: CmsField[] = [
   {
     name: "intro_image",
     label: "Intro Picture",
-    widget: "image"
+    widget: "image",
   },
   {
     name: "bio_md",
-    label: 'Biography',
-    widget: "markdown"
-  }
+    label: "Biography",
+    widget: "markdown",
+  },
 ];
 
 export const showcaseCollectionPageContentFields = (
@@ -73,7 +73,7 @@ export const showcaseCollectionPageContentFields = (
       widget: "string",
     },
     {
-      name: 'gallery_artwork', // might need to be made unique
+      name: "gallery_artwork", // might need to be made unique
       label: `Gallery Artwork`,
       widget: "list",
       summary: "{{field.title}}", // this should be something else,
@@ -104,7 +104,7 @@ export const artworkCollectionFields: CmsField[] = [
     name: "title",
     label: "Artwork Name",
     widget: "string",
-    pattern: ['^.{0,35}$', "No more than 35 characters"]
+    pattern: ["^.{0,35}$", "No more than 35 characters"],
   },
   {
     name: "description",

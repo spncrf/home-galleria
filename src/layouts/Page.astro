@@ -1,9 +1,5 @@
 ---
-import {
-  Header,
-  Footer,
-  ContactButton,
-} from "@components/odyssey-theme.js";
+import { Header, Footer, ContactButton } from "@components/odyssey-theme.js";
 import { SITE_SETTINGS } from "@config/consts";
 import Base from "./Base.astro";
 import type { BaseHeadProps as BaseHeadProps } from "../components/head/BaseHead.astro";
@@ -18,6 +14,7 @@ import { nav } from "../config/nav.js";
 
 const { seo } = Astro.props as PageProps;
 ---
+
 <style>
   div#page {
     min-height: 60vh;

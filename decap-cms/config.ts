@@ -39,7 +39,10 @@ aboutCollection = setPageContentFile(
 );
 
 // Contact
-let contactCollection = createFileCollection({ label: "Contact", name: "contact" });
+let contactCollection = createFileCollection({
+  label: "Contact",
+  name: "contact",
+});
 contactCollection = setPageContentFile(
   contactCollection,
   contactCollectionPageContentFields,

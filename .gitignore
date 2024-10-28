@@ -27,3 +27,5 @@ icon.d.ts
 
 # local references
 examples/
+
+.vscode

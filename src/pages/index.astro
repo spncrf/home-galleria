@@ -16,7 +16,7 @@ import { SITE_SETTINGS } from "@config/consts";
 import HomeHeroSection from "@components/sections/heros/HomeHeroSection.astro";
 
 const seo = {
-  title: `Home Page | ${SITE_SETTINGS.brandName}`,
+  title: `${SITE_SETTINGS.brandName}`,
   description: "Landing Page #1 | Astro Odyssey Theme",
 };
 
@@ -29,9 +29,8 @@ const { home_prelude, showcase_images } = homeContent.data;
 
 <script src="../utils/auth"></script>
 <Layout {seo}>
-
   <HomeHeroSection />
-  
+
   <TextAndImageHero reversed>
     <div slot="text-container">
       {home_prelude}
@@ -55,47 +54,9 @@ const { home_prelude, showcase_images } = homeContent.data;
   <CustomerQuoteSection
     quoteText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, vero nobis? Voluptas assumenda, voluptatibus commodi qui ducimus delectus praesentium maiores, impedit iure labore ratione, ea facilis numquam doloremque aperiam aspernatur."
     customerName="Happy Customer"
-  />i
+  />
 
   <ShowcaseLinkSection links={showcase_images} />
-
-  <ThreeColumnTextSection>
-    <div slot="column-1-body">
-      <h2>Why?</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adpisicing elit. Est dolorem
-        tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
-        consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
-        mollitia cumque. Velit.
-      </p>
-    </div>
-    <Button slot="column-1-cta">Learn More</Button>
-    <div slot="column-2-body">
-      <h2>How?</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
-        tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
-        consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
-        mollitia cumque. Velit.
-      </p>
-    </div>
-    <Button slot="column-2-cta" outlined>Learn More</Button>
-    <div slot="column-3-body">
-      <h2>What?</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
-        tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
-        consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
-        mollitia cumque. Velit.
-      </p>
-    </div>
-    <Button slot="column-3-cta">Learn More</Button>
-  </ThreeColumnTextSection>
-
-  <YouTubeEmbedSection
-    url="https://www.youtube.com/watch?v=cbYr75_R15M"
-    rounded
-  />
 
   <StickyTextImageSection>
     <div slot="text-container">

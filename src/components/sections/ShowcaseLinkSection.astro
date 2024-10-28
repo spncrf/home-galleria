@@ -3,51 +3,28 @@ import { STATIC_SLUG } from "@config/consts";
 import LinkCard from "@components/cards/LinkCard.astro";
 
 interface Props {
-    links: Record<string, string> // use better type here
+  links: Record<string, string>; // use better type here
 }
 
 const { links } = Astro.props;
-
 ---
+
 <style>
-    .showcase-link__section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        padding: 2rem;
-        gap: 3rem;
-    }
+  .showcase-link__section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
 </style>
 <section class="showcase-link__section">
+  <LinkCard imgPath={links.clock} title="Clocks" href={STATIC_SLUG.clocks} />
+  <LinkCard imgPath={links.mural} title="Murals" href={STATIC_SLUG.murals} />
   <LinkCard
-    imgPath={links.clock}
-    title="Clocks"
-    href={STATIC_SLUG.clocks}
-  />
-  <LinkCard
-    imgPath={links.mural}
-    title="Murals"
-    href={STATIC_SLUG.murals}
-  />
-  <LinkCard
-    imgPath={links.mural}
-    title="Murals"
-    href={STATIC_SLUG.murals}
-  />
-  <LinkCard
-    imgPath={links.mural}
-    title="Murals"
-    href={STATIC_SLUG.murals}
-  />
-  <LinkCard
-    imgPath={links.mural}
-    title="Murals"
-    href={STATIC_SLUG.murals}
-  />
-  <LinkCard
-    imgPath={links.mural}
-    title="Murals"
-    href={STATIC_SLUG.murals}
+    imgPath={links.theme_room}
+    title="Theme Rooms"
+    href={STATIC_SLUG.theme_rooms}
   />
 </section>

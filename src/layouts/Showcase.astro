@@ -1,5 +1,10 @@
 ---
-import { Container, PhotoSwipe } from "@components/odyssey-theme";
+import {
+  Container,
+  PhotoSwipe,
+  TextCardSection,
+  TextSection,
+} from "@components/odyssey-theme";
 import { getImageFromPath } from "@utils/images";
 import { getArtworkEntries } from "@utils/artwork";
 import Page from "./Page.astro";
@@ -30,7 +35,7 @@ const galleryEntries = await Promise.all(
       description: artworkEntry.description,
       date: artworkEntry.date,
     };
-  })
+  }),
 );
 
 const thumbnail = { height: 300, width: 300 };
@@ -39,7 +44,26 @@ const thumbnail = { height: 300, width: 300 };
 <Page {seo}>
   <PageTitle pageTitle={page_title} />
   <Container>
-      <PhotoSwipe galleryId={page_title} entries={galleryEntries} {thumbnail} />
+    {
+      galleryEntries.length > 0 ? (
+        <PhotoSwipe
+          galleryId={page_title}
+          entries={galleryEntries}
+          {thumbnail}
+        />
+      ) : (
+        <TextCardSection>
+          <div class="coming-soon">Showcase coming soon!</div>
+        </TextCardSection>
+      )
+    }
   </Container>
   <slot />
 </Page>
+
+<style>
+  .coming-soon {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+  }
+</style>

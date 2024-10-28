@@ -2,6 +2,7 @@ export const STATIC_SLUG = {
   home: "/",
   about: "/about",
   contact: "/contact",
+  contact_success: "/contact/success",
   theme_rooms: "/showcase/theme_rooms",
   clocks: "/showcase/clocks",
   murals: "/showcase/murals",

@@ -23,12 +23,11 @@ const { seo } = Astro.props;
       <slot />
     </main>
     <slot name="footer" />
+    <style>
+      main {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  main {
-    padding-top: 2.5rem;
-    padding-bottom:2.5rem;
-  }
-</style>

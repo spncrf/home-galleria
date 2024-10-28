@@ -5,22 +5,12 @@ import { Image } from "astro:assets";
 export interface Props {
   imgPath: string;
   alt: string;
-  width?: number;
-  height?: number;
+  cssClasses: string[];
 }
 
-const { imgPath, alt } = Astro.props;
+const { imgPath, alt, cssClasses } = Astro.props;
 
 const img = getImageFromPath(imgPath);
-
-// Notes:
-// Look into using sizes + widths props (https://docs.astro.build/en/guides/images/#widths)
-// Styling used for LinkCard; determine whether it should be moved elsewhere
-const responsiveWidth = `400vw` as unknown as number;
-const responsiveHeight = `400vw` as unknown as number;
-
-//const widths=[240, 540, 760];
-//const sizes=`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 760px`;
-
 ---
-<Image src={img} alt={alt} />
+
+<Image src={img} alt={alt} class:list={cssClasses} />
